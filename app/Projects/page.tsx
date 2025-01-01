@@ -1,6 +1,6 @@
 import Navbar from "@/components/navbar";
 
-export default function Experience(){
+export default function Projects(){
   return (
     <div>
       <Navbar></Navbar>
