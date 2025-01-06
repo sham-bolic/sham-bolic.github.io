@@ -12,7 +12,7 @@ export default function AboutMe() {
           <p className="pt-4 text-lg">
             Since a young age, I have always believed in a growth mindset even
             before I knew what it was. I would always be frustrated when those
-            around me would say "I wasn't meant for this", when they simply have
+            around me would say &quotI wasn&apost meant for this&quot, when they simply have
             not put in the effort as a result of their mentality. I understand
             that there are times when things are out of our control, but I
             believe that with enough effort and proper direction there will be
