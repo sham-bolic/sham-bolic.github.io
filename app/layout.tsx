@@ -9,7 +9,7 @@ const kanit = Kanit({
 
 export const metadata: Metadata = {
   title: "Website Portfolio",
-  description: "Max's portfolio website",
+  description: "Max's website portfolio",
 };
 
 export default function RootLayout({

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function NavButton(props: { name: string }) {
   const name = props.name.replace(/\s/g, "");
-  const href = name == "Max." ? '/' : `/${name}`
+  let href = name == "Max." ? '/' : `/${name}`
   
   return (
     <Link
