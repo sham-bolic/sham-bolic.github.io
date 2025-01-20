@@ -1,9 +1,9 @@
 import Image from "next/image";
 export default function Coursework() {
   return (
-    <div className="p-10 bg-tertiarybg px-24 h-[40%] flex flex-col ">
+    <div className="p-10 bg-tertiarybg px-24 h-[40%] flex flex-col">
       <h1 className="text-3xl text-primarytext">Education</h1>
-      <div className="flex flex-row-reverse justify-between text-white pt-4 items-center">
+      <div className="flex flex-row-reverse justify-between text-white pt-4 items-center pb-12">
         <div className="w-[65%]">
           <h2 className="text-3xl text-secondarytext">McGill University</h2>
           <div className="text-lg">
