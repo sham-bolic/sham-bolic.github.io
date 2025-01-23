@@ -9,7 +9,7 @@ export default function SkillComponent(props: {
         <ul className="flex flex-wrap gap-2 justify-center">
           {props.skills.map((key, value) => {
             return (
-              <li key={key.skill} className="px-3 flex flex-col justify-center items-center w-auto h-auto">
+              <li key={value} className="px-3 flex flex-col justify-center items-center w-auto h-auto">
                 <div>
                   <key.icon size={40}></key.icon>
                 </div>
