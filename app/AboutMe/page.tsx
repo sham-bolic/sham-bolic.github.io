@@ -1,18 +1,18 @@
 import Navbar from "@/components/navbar";
-import Hobbies from "@/components/hobbies";
+import Hobbies from "@/components/aboutMeComponents/hobbies";
 import Image from "next/image";
 
 export default function AboutMe() {
   return (
     <div>
       <Navbar></Navbar>
-      <div className="bg-secondarybg text-primarytext px-24 py-4 flex items-center justify-between">
+      <div className="bg-secondarybg text-primarytext px-24 py-4 flex items-center justify-between mt-16 rounded-b-half pb-8">
         <div className="w-[60%]">
           <h1 className="text-4xl font-semibold">About Me</h1>
           <p className="pt-4 text-lg">
             Since a young age, I have always believed in a growth mindset even
             before I knew what it was. I would always be frustrated when those
-            around me would say &quotI wasn&apost meant for this&quot, when they
+            around me would say &quot;I wasn&apost meant for this&quot;, when they
             simply have not put in the effort as a result of their mentality. I
             understand that there are times when things are out of our control,
             but I believe that with enough effort and proper direction there

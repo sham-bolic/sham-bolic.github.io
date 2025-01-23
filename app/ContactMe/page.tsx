@@ -1,89 +1,60 @@
-'use client'
-import React, { useRef } from "react";
+import Navbar from "@/components/navbar";
+import ContactComponent from "@/components/contactComponents/contactComponent";
+import Image from "next/image";
+import { SiDevpost, SiGithub, SiLinkedin } from "react-icons/si";
+import { MdOutlineMailOutline, MdSmartphone } from "react-icons/md";
 
-const ScrollWithArrows: React.FC = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  // Function to scroll left
-  const scrollLeft = (): void => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({
-        left: -200, // Adjust scroll distance
-        behavior: "smooth",
-      });
-    }
-  };
-
-  // Function to scroll right
-  const scrollRight = (): void => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({
-        left: 200, // Adjust scroll distance
-        behavior: "smooth",
-      });
-    }
-  };
-
+export default function ContactMe() {
   return (
-    <div className="relative w-full">
-      {/* Left Arrow */}
-      <button
-        onClick={scrollLeft}
-        className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow-md z-10"
-        aria-label="Scroll Left"
-      >
-        &larr;
-      </button>
-
-      {/* Scrollable Container */}
-      <div
-        ref={scrollRef}
-        className="overflow-x-auto flex items-center scrollbar-hide scroll-smooth"
-      >
-        <div className="flex space-x-4 w-max">
-          <div className="bg-blue-500 text-white p-6 rounded shadow-md">Item 1</div>
-          <div className="bg-green-500 text-white p-6 rounded shadow-md">Item 2</div>
-          <div className="bg-red-500 text-white p-6 rounded shadow-md">Item 3</div>
-          <div className="bg-purple-500 text-white p-6 rounded shadow-md">Item 4</div>
-          <div className="bg-yellow-500 text-white p-6 rounded shadow-md">Item 5</div>
-          <div className="bg-blue-500 text-white p-6 rounded shadow-md">Item 1</div>
-          <div className="bg-green-500 text-white p-6 rounded shadow-md">Item 2</div>
-          <div className="bg-red-500 text-white p-6 rounded shadow-md">Item 3</div>
-          <div className="bg-purple-500 text-white p-6 rounded shadow-md">Item 4</div>
-          <div className="bg-yellow-500 text-white p-6 rounded shadow-md">Item 5</div>
-          <div className="bg-blue-500 text-white p-6 rounded shadow-md">Item 1</div>
-          <div className="bg-green-500 text-white p-6 rounded shadow-md">Item 2</div>
-          <div className="bg-red-500 text-white p-6 rounded shadow-md">Item 3</div>
-          <div className="bg-purple-500 text-white p-6 rounded shadow-md">Item 4</div>
-          <div className="bg-yellow-500 text-white p-6 rounded shadow-md">Item 5</div>
-          <div className="bg-blue-500 text-white p-6 rounded shadow-md">Item 1</div>
-          <div className="bg-blue-500 text-white p-6 rounded shadow-md">Item 1</div>
-          <div className="bg-green-500 text-white p-6 rounded shadow-md">Item 2</div>
-          <div className="bg-red-500 text-white p-6 rounded shadow-md">Item 3</div>
-          <div className="bg-purple-500 text-white p-6 rounded shadow-md">Item 4</div>
-          <div className="bg-yellow-500 text-white p-6 rounded shadow-md">Item 5</div>
-           <div className="bg-blue-500 text-white p-6 rounded shadow-md">Item 1</div>
-          <div className="bg-green-500 text-white p-6 rounded shadow-md">Item 2</div>
-          <div className="bg-red-500 text-white p-6 rounded shadow-md">Item 3</div>
-          <div className="bg-purple-500 text-white p-6 rounded shadow-md">Item 4</div>
-          <div className="bg-yellow-500 text-white p-6 rounded shadow-md">Item 5</div>
-          <div className="bg-green-500 text-white p-6 rounded shadow-md">Item 2</div>
-          <div className="bg-red-500 text-white p-6 rounded shadow-md">Item 3</div>
-          <div className="bg-purple-500 text-white p-6 rounded shadow-md">Item 4</div>
-          <div className="bg-yellow-500 text-white p-6 rounded shadow-md">Item 5</div>
+    <div className="flex flex-col items-center">
+      <Navbar />
+      <div className="bg-secondarybg rounded-b-full mt-16 p-20 flex justify-center flex-col items-center w-full">
+        <h1 className="font-bold text-6xl">Contact me</h1>
+        <p className="mt-8 text-primarytext w-1/3 text-center">
+          Want to get in touch with me regarding any opportunities? Below are
+          all the possible ways to reach out to me!
+        </p>
+      </div>
+      <div className="flex items-center w-1/2 justify-between pt-8">
+        <div className="flex flex-col justify-center items-center">
+          <h3 className="font-semibold text-3xl text-primarytext">
+            Maximillian Fong
+          </h3>
+          <h4 className="flex items-center text-xl py-2">
+            <MdSmartphone className="mr-2"></MdSmartphone>
+            fongcymax@gmail.com
+          </h4>
+          <h4 className="flex items-center text-xl pb-4">
+            <MdOutlineMailOutline className="mr-2"></MdOutlineMailOutline>
+            (514) 814-4339
+          </h4>
+          <div className="flex justify-between w-full">
+            <ContactComponent
+              name="LinkedIn"
+              icon={SiLinkedin}
+              link="https://www.linkedin.com/in/maximillian-fong-8b8577294/"
+            ></ContactComponent>
+            <ContactComponent
+              name="Github"
+              icon={SiGithub}
+              link="https://github.com/sham-bolic"
+            ></ContactComponent>
+            <ContactComponent
+              name="Devpost"
+              icon={SiDevpost}
+              link="https://devpost.com/sham-bolic?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav"
+            ></ContactComponent>
+          </div>
+        </div>
+        <div className="border h-72 w-0 border-white"></div>
+        <div className="relative w-80 h-80 rounded-full overflow-hidden">
+          <Image
+            src="/images/contactphoto.jpg"
+            alt="contact photo"
+            layout="fill"
+          />
         </div>
       </div>
-
-      {/* Right Arrow */}
-      <button
-        onClick={scrollRight}
-        className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow-md z-10"
-        aria-label="Scroll Right"
-      >
-        &rarr;
-      </button>
     </div>
   );
-};
-
-export default ScrollWithArrows;
+}

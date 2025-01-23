@@ -1,10 +1,41 @@
+'use client'
 import Image from "next/image";
 import RedirectButton from "./redirectButton";
+import { useState, useEffect, useRef } from "react";
+
 export default function Bio() {
+  const typingEffect = ({
+    text,
+    typingSpeed = 100,
+  }: { text: string; typingSpeed?: number }) => {
+    const [displayedText, setDisplayText] = useState("");
+    const hasMounted = useRef(false);
+
+    useEffect(() => {
+      let currentIndex = 0;
+      if (hasMounted.current) return;
+      hasMounted.current = true;
+
+      const nextChar = () => {
+        console.log(text.length)
+        if (currentIndex < text.length-1) {
+          setDisplayText((prev) => prev + text[currentIndex]);
+          currentIndex++;
+          setTimeout(nextChar, typingSpeed)
+        } 
+      };
+
+      nextChar();
+    }, [text, typingSpeed]);
+    return displayedText
+  };
   return (
-    <div className="flex flex-row justify-between items-center p-10 bg-secondarybg px-24">
+    <div className="flex flex-row justify-between items-center p-10 bg-secondarybg px-24 mt-16 rounded-b-half pb-16">
       <div className="w-[60%] flex flex-col items-start">
-        <h1 className="text-3xl text-primarytext">Hi, I&apos;m Maximillian Fong,</h1>
+        <div className="flex text-3xl ">
+          <h1 className="text-primarytext">{typingEffect({ text: "Hi, I'm Maximillian Fong" })}</h1>
+          <h1 className="text-secondarytext animate-blink"> |</h1>
+        </div>
         <h3 className="text-2xl pt-2 text-secondarytext">
           U3 Honors Computer Science Major, Statistics minor
         </h3>
@@ -22,7 +53,10 @@ export default function Bio() {
         </p>
         <div className="flex">
           <RedirectButton href="/ContactMe" text="Let's Talk"></RedirectButton>
-          <RedirectButton href="/files/CV_MaximillianFong.pdf" text="Resume"></RedirectButton>
+          <RedirectButton
+            href="/files/CV_MaximillianFong.pdf"
+            text="Resume"
+          ></RedirectButton>
         </div>
       </div>
       <div className="w-[50%] flex items-center justify-center">

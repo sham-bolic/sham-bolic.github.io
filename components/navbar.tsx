@@ -3,7 +3,7 @@ import NavButton from "./navbutton";
 export default function Navbar() {
 
   return (
-    <nav className="flex w-full justify-between text-primarytext bg-secondarybg py-4 px-24">
+    <nav className="flex w-full justify-between text-primarytext bg-secondarybg py-4 px-24 fixed top-0 z-10">
       <div className="flex item-center justify-center ">
         <h2 className="font-semibold  text-3xl">
             <NavButton name="Max."></NavButton></h2>
