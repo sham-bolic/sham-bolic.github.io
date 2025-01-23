@@ -29,7 +29,7 @@ export default function Projects() {
           <FaArrowLeft size={50}></FaArrowLeft>
         </button>
         <div
-          className="snap-x snap-mandatory mx-10 scroll overflow-x-auto"
+          className="snap-x snap-mandatory mx-10 scroll overflow-x-auto no-scrollbar"
           ref={scrollRef}
         >
           <div className="flex space-x-4 w-max">
