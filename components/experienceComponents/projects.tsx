@@ -52,7 +52,7 @@ export default function Projects() {
               title="BetterCV - AI Generated CV"
               description="Developed a web app that generates job-specific CVs using AI to analyze job descriptions and rank user-provided skills and experiences. Built with React, TypeScript, Tailwind CSS, Drizzle ORM, and Postgres, the platform integrates Gemini AI for intelligent content selection, creating tailored, visually appealing CVs to help users stand out in the job market."
               image={path + "bettercv.png"}
-              repo="https://github.com/denis-tsariov/codejam14"
+              repo="https://github.com/DavidNitchi/McWICS25"
               devpost="https://devpost.com/software/bcv-hackmcwics25"
               demo="https://www.youtube.com/watch?v=TeJMOojokRM"
             ></ProjectComponent>

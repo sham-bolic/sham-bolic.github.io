@@ -22,7 +22,7 @@ export default function Hobbies() {
           src={path + "climbing.jpg"}
           alt="climbing"
           title="Climbing"
-          text="The aspect that draws me to bouldering the the constant battle against myself. The feeling of getting stronger, of getting better control over your body is addicting. It also taught me that technique is just as important if not more important than strength."
+          text="The aspect that draws me to bouldering the the constant battle against myself. Each boulder is a like a problem that I have to solve, which stimulates my mind as much as it does my body."
         ></HobbyComponent>
       </div>
       <div className="flex justify-center">

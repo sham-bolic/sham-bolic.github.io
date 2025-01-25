@@ -15,7 +15,7 @@ export default function ContactMe() {
           all the possible ways to reach out to me!
         </p>
       </div>
-      <div className="flex items-center w-1/2 justify-between pt-8">
+      <div className="flex items-center w-1/2 justify-between pt-8 flex-wrap">
         <div className="flex flex-col justify-center items-center">
           <h3 className="font-semibold text-3xl text-primarytext">
             Maximillian Fong
