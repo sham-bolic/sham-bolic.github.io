@@ -6,10 +6,10 @@ export default function AboutMe() {
   return (
     <div>
       <Navbar></Navbar>
-      <div className="bg-secondarybg text-primarytext px-24 py-4 flex items-center justify-between mt-16 rounded-b-half pb-8">
-        <div className="w-[60%]">
-          <h1 className="text-4xl font-semibold">About Me</h1>
-          <p className="pt-4 text-lg">
+      <div className="bg-secondarybg text-primarytext px-10 lg:px-24 py-4 rounded-b-half pb-14">
+        <h1 className="text-4xl font-semibold text-center">About Me</h1>
+        <div className="lg:w-[100%] flex items-center justify-between flex-col-reverse lg:flex-row">
+          <p className="pt-4 text-lg lg:w-[60%]">
             Since a young age, I have always believed in a growth mindset even
             before I knew what it was. I would always be frustrated when those
             around me would say &quot;I wasn&apos;t meant for this&quot;, when they
@@ -22,10 +22,9 @@ export default function AboutMe() {
             qualifications that you may be looking for, but I am confident that
             I can learn and adapt to any situation that I am put in.
           </p>
-        </div>
-        <div className="flex justify-center w-[40%] pb-4 px-4">
-          <div className="rounded-3xl overflow-hidden">
+          <div className="rounded-3xl overflow-hidden my-4 lg:h-92 lg:w-92 h-72 w-72 lg:my-0">
             <Image
+              className="relative"
               src="/images/growthmindset.jpg"
               alt="growthmindset"
               width={400}
@@ -35,7 +34,7 @@ export default function AboutMe() {
         </div>
       </div>
       <div className="pb-10 pt-4">
-        <h2 className="text-3xl font-semibold px-24 py-8 flex justify-center">
+        <h2 className="text-3xl font-semibold lg:px-24 py-8 flex justify-center">
           Hobbies and Interests
         </h2>
         <Hobbies></Hobbies>

@@ -6,7 +6,7 @@ export default function HobbyComponent(props: {
   text: string;
 }) {
   return (
-    <div className="w-[550px] h-[450px] relative group">
+    <div className="w-full h-96 lg:w-[550px] lg:h-[450px] relative group">
       <Image
         src={props.src}
         alt={props.alt}

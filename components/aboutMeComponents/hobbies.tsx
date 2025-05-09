@@ -5,7 +5,7 @@ export default function Hobbies() {
 
   return(
     <div>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center flex-col lg:flex-row">
         <HobbyComponent
           src={path + "vball.jpg"}
           alt="volleyball"
@@ -25,7 +25,7 @@ export default function Hobbies() {
           text="The aspect that draws me to bouldering the the constant battle against myself. Each boulder is a like a problem that I have to solve, which stimulates my mind as much as it does my body."
         ></HobbyComponent>
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center flex-col lg:flex-row">
         <HobbyComponent
           src={path + "snowboarding.jpg"}
           alt="snowboarding"

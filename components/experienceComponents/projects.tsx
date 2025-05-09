@@ -20,16 +20,16 @@ export default function Projects() {
   return (
     <div>
       <h1 className="text-center text-4xl font-semibold py-4">Projects</h1>
-      <div className="flex items-center">
+      <div className="flex items-center w-full h-full relative">
         <button
           onClick={() => scroll("left")}
-          className="bg-gray-800 text-white p-2 rounded-full shadow-md h-16 w-16 ml-8"
+          className="bg-gray-800 text-white p-2 rounded-full shadow-md h-16 w-16 ml-8 absolute left-0 bottom-1/2"
           aria-label="Scroll Left"
         >
           <FaArrowLeft size={50}></FaArrowLeft>
         </button>
         <div
-          className="snap-x snap-mandatory mx-10 scroll overflow-x-auto no-scrollbar"
+          className="snap-x snap-mandatory lg:mx-10 scroll overflow-x-auto no-scrollbar"
           ref={scrollRef}
         >
           <div className="flex space-x-4 w-max">
@@ -77,7 +77,7 @@ export default function Projects() {
         </div>
         <button
           onClick={() => scroll("right")}
-          className="bg-gray-800 text-white p-2 rounded-full shadow-md h-16 w-16 mr-8"
+          className="bg-gray-800 text-white p-2 rounded-full shadow-md lg:h-16 lg:w-16 mr-8 absolute right-0 bottom-1/2"
           aria-label="Scroll Right"
         >
           <FaArrowLeft size={50} className="rotate-180"></FaArrowLeft>

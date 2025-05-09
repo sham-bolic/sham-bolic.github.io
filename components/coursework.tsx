@@ -1,11 +1,11 @@
 import Image from "next/image";
 export default function Coursework() {
   return (
-    <div className="p-10 bg-tertiarybg px-24 h-[40%] flex flex-col">
-      <h1 className="text-3xl text-primarytext">Education</h1>
-      <div className="flex flex-row-reverse justify-between text-white pt-4 items-center pb-12">
-        <div className="w-[65%]">
-          <h2 className="text-3xl text-secondarytext">McGill University</h2>
+    <div className="p-10 bg-tertiarybg lg:px-24 h-[40%] flex flex-col">
+      <h2 className="text-4xl font-semibold lg:px-24 flex justify-center mb-4">Education</h2>
+      <div className="flex flex-col-reverse lg:flex-row-reverse justify-between text-white pt-4 lg:items-center pb-12">
+        <div className="lg:w-[65%]">
+          <h2 className="text-3xl text-secondarytext mb-2">McGill University</h2>
           <div className="text-lg">
             <h4>August 2022 - June 2026 (Expected)</h4>
             <h4>BSc Honours Computer Science</h4>
@@ -18,7 +18,7 @@ export default function Coursework() {
             </p>
           </div>
         </div>
-        <div className="rounded-3xl overflow-hidden mr-4">
+        <div className="rounded-3xl overflow-hidden lg:mr-4 mb-4 lg:mb-0">
           <Image
             src="/images/mcgill-university-logo.png"
             alt="mcgill-logo"

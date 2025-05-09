@@ -25,7 +25,7 @@ import {
 } from "react-icons/si";
 export default function Skills() {
   return (
-    <div className="bg-secondarybg mt-16 rounded-b-half">
+    <div className="bg-secondarybg rounded-b-half">
       <h1 className="text-center text-4xl font-semibold pt-4">Skills</h1>
       <div className="flex flex-col pb-8">
         <SkillComponent
