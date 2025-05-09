@@ -43,7 +43,7 @@ export default function Bio() {
     return displayedText;
   };
   return (
-    <div className="flex flex-col-reverse lg:flex-row justify-between items-center p-10 bg-secondarybg lg:px-24 rounded-b-half pb-16">
+    <div className="flex flex-col-reverse lg:flex-row justify-between items-center p-8 bg-secondarybg lg:px-24 rounded-b-half pb-16">
       <div className="lg:w-[60%] flex flex-col items-start">
         <div className="flex text-3xl ">
           <h1 className="text-primarytext">
