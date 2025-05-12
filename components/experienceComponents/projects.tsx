@@ -7,7 +7,7 @@ export default function Projects() {
   const scrollRef = useRef<HTMLDivElement>(null);
   function scroll(direction: string) {
     if (scrollRef.current) {
-      const distance = direction == "left" ? -400 : 400;
+      const distance = direction == "left" ? -432 : 432;
       scrollRef.current.scrollBy({
         left: distance,
         behavior: "smooth",
@@ -23,7 +23,7 @@ export default function Projects() {
       <div className="flex items-center w-full h-full relative">
         <button
           onClick={() => scroll("left")}
-          className="bg-gray-800 text-white p-2 rounded-full shadow-md h-16 w-16 ml-8 absolute left-0 bottom-1/2"
+          className="bg-gray-800 text-white p-2 rounded-full shadow-md h-16 w-16 ml-8 absolute left-0 bottom-1/2 z-10"
           aria-label="Scroll Left"
         >
           <FaArrowLeft size={50}></FaArrowLeft>
@@ -77,7 +77,7 @@ export default function Projects() {
         </div>
         <button
           onClick={() => scroll("right")}
-          className="bg-gray-800 text-white p-2 rounded-full shadow-md lg:h-16 lg:w-16 mr-8 absolute right-0 bottom-1/2"
+          className="bg-gray-800 text-white p-2 rounded-full shadow-md lg:h-16 lg:w-16 mr-8 absolute right-0 bottom-1/2 z-10"
           aria-label="Scroll Right"
         >
           <FaArrowLeft size={50} className="rotate-180"></FaArrowLeft>
