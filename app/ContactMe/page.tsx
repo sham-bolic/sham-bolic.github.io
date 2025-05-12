@@ -8,9 +8,9 @@ export default function ContactMe() {
   return (
     <div className="flex flex-col items-center">
       <Navbar />
-      <div className="bg-secondarybg rounded-b-full lg:mt-16 lg:p-20 p-10 flex justify-center flex-col items-center w-full">
-        <h1 className="font-bold text-6xl">Contact me</h1>
-        <p className="mt-8 text-primarytext lg:w-1/3 text-center pb-14">
+      <div className="bg-secondarybg rounded-b-full lg:p-20 p-10 flex justify-center flex-col items-center w-full">
+        <h1 className="font-bold text-6xl text-center">Contact me</h1>
+        <p className="mt-8 text-primarytext lg:w-1/2 text-center lg:pb-8 pb-14 text-lg">
           Want to get in touch with me regarding any opportunities? Below are
           all the possible ways to reach out to me!
         </p>
