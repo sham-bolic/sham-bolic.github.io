@@ -47,7 +47,7 @@ export default function Bio() {
       <div className="lg:w-[60%] flex flex-col items-start">
         <div className="flex text-3xl ">
           <h1 className="text-primarytext">
-            {typingEffect({ text: "Hi , I'm Maximillian Fong" })}
+            {typingEffect({ text: "H i, I'm Maximillian Fong" })}
           </h1>
           <h1 className="text-secondarytext animate-blink"> |</h1>
         </div>
