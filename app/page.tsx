@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
-import { Mail, Github, Linkedin, ExternalLink, ChevronUp } from 'lucide-react';
+import { Mail, Github, Linkedin, ExternalLink, ChevronUp, Menu, X } from 'lucide-react';
 
 // Custom hook to check if an element is on screen
 const useOnScreen = (ref: React.RefObject<HTMLElement | null>, threshold = 0.1) => {
@@ -30,6 +30,8 @@ const useOnScreen = (ref: React.RefObject<HTMLElement | null>, threshold = 0.1) 
 export default function App() {
   // State for scroll-to-top button
   const [showScrollTop, setShowScrollTop] = useState(false);
+  // State for mobile menu
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Monitor scroll position for scroll-to-top button
   useEffect(() => {
@@ -514,6 +516,8 @@ export default function App() {
               {developerName}
             </a>
           </h1>
+          
+          {/* Desktop Navigation */}
           <ul className="hidden md:flex space-x-1">
             <li><a href="#home" className="nav-link">Home</a></li>
             <li><a href="#projects" className="nav-link">Projects</a></li>
@@ -523,7 +527,87 @@ export default function App() {
             <li><a href="#hobbies" className="nav-link">Hobbies</a></li>
             <li><a href="#contact" className="nav-link">Contact</a></li>
           </ul>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 rounded-lg hover:bg-neutral-100 transition-colors"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle mobile menu"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
+
+        {/* Mobile Navigation Dropdown */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-neutral-200">
+            <ul className="flex flex-col space-y-0">
+              <li>
+                <a 
+                  href="#home" 
+                  className="block px-4 py-3 text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 transition-colors border-b border-neutral-100"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Home
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#projects" 
+                  className="block px-4 py-3 text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 transition-colors border-b border-neutral-100"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Projects
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#skills" 
+                  className="block px-4 py-3 text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 transition-colors border-b border-neutral-100"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Skills
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#experience" 
+                  className="block px-4 py-3 text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 transition-colors border-b border-neutral-100"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Experience
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#education" 
+                  className="block px-4 py-3 text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 transition-colors border-b border-neutral-100"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Education
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#hobbies" 
+                  className="block px-4 py-3 text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 transition-colors border-b border-neutral-100"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Hobbies
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#contact" 
+                  className="block px-4 py-3 text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+        )}
       </nav>
 
       {/* Main content area */}
