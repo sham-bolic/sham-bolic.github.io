@@ -246,7 +246,7 @@ export default function App() {
     const animationClasses = `transition-opacity duration-1000 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`;
 
     return (
-      <section id="projects" ref={ref} className="py-20 md:py-32 bg-white">
+      <section id="projects" ref={ref} className="py-20 md:py-32 bg-neutral-50">
         <div className="container mx-auto px-4 max-w-7xl">
           <h2 className="section-title">Featured Projects</h2>
           <div className={`grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 ${animationClasses}`}>
@@ -293,7 +293,7 @@ export default function App() {
     const animationClasses = `transition-opacity duration-1000 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`;
 
     return (
-      <section id="skills" ref={ref} className="py-20 md:py-32 bg-neutral-50">
+      <section id="skills" ref={ref} className="py-20 md:py-32 bg-white">
         <div className="container mx-auto px-4 max-w-7xl">
           <h2 className="section-title">Technical Skills</h2>
           <div className={`grid gap-8 grid-cols-1 lg:grid-cols-3 ${animationClasses}`}>
