@@ -123,25 +123,32 @@ export default function App() {
   const experience = [
     {
       id: 1,
-      title: "Software Developer Intern",
-      company: "Retail Realm",
-      date: "05/2025 - Present",
-      description: "Designed and deployed an internal support automation tool using Azure Databricks and PySpark. Implemented a Retrieval-Augmented Generation (RAG) system and an agentic chatbot to improve support team efficiency and reduce response time.",
+      title: "Software Engineer Intern - Growth",
+      company: "Botpress",
+      date: "Sep 2025 - Present",
+      description: "Develop integrations for external platforms." ,
     },
     {
       id: 2,
+      title: "Software Developer Intern",
+      company: "Retail Realm",
+      date: "May 2025 - Aug 2025",
+      description: "Designed and deployed an internal support automation tool using Azure Databricks and PySpark. Implemented a Retrieval-Augmented Generation (RAG) system and an agentic chatbot to improve support team efficiency and reduce response time.",
+    },
+    {
+      id: 3,
       title: "Waiter",
       company: "Brit & Chips",
       date: "Mar 2022 - Oct 2023",
       description: "Provided excellent customer service in a fast-paced restaurant environment. Managed multiple tables simultaneously while maintaining high standards of service quality and customer satisfaction.",
     },
-    {
-      id: 3,
-      title: "Cashier / Bagger",
-      company: "Metro Inc.",
-      date: "Mar 2019 - Mar 2022",
-      description: "Handled customer transactions efficiently and accurately. Developed strong communication skills and attention to detail while working in a high-volume retail environment.",
-    },
+    // {
+    //   id: 4,
+    //   title: "Cashier / Bagger",
+    //   company: "Metro Inc.",
+    //   date: "Mar 2019 - Mar 2022",
+    //   description: "Handled customer transactions efficiently and accurately. Developed strong communication skills and attention to detail while working in a high-volume retail environment.",
+    // },
   ];
   
   const education = [
@@ -328,12 +335,17 @@ export default function App() {
     const isVisible = useOnScreen(ref, 0.2);
     const animationClasses = `transition-opacity duration-1000 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`;
 
+    // Debug: Log the experience data
+    console.log('Experience data:', experience);
+
     return (
       <section id="experience" ref={ref} className="py-20 md:py-32 bg-white">
         <div className="container mx-auto px-4 max-w-7xl">
           <h2 className="section-title">Work Experience</h2>
           <div className={`timeline relative md:border-l-2 border-neutral-200 md:pl-8 ${animationClasses}`}>
-            {experience.map((job, index) => (
+            {experience.map((job, index) => {
+              console.log(`Rendering job ${index}:`, job);
+              return (
               <div key={job.id} className="timeline-item relative pb-12 last:pb-0">
                 <span className="timeline-dot bg-warm-500 hidden md:flex">
                   <span className="w-2 h-2 bg-white rounded-full"></span>
@@ -352,7 +364,8 @@ export default function App() {
                   <p className="text-neutral-700 leading-relaxed">{job.description}</p>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -638,6 +651,10 @@ export default function App() {
           <ChevronUp size={24} />
         </button>
       )}
+
+    <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/09/09/03/20250909033652-E1XCLYUC.js" defer></script>
+    
     </div>
   );
 }
