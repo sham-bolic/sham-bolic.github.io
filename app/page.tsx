@@ -9,7 +9,6 @@ import {
 	Menu,
 	X,
 } from 'lucide-react';
-import { useRouter } from 'next/navigation';
 
 // Custom hook to check if an element is on screen
 const useOnScreen = (
@@ -54,29 +53,6 @@ export default function App() {
 		window.addEventListener('scroll', handleScroll);
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, []);
-
-	const router = useRouter();
-
-	// Botpress event listener
-	useEffect(() => {
-		const setupBotpressEvents = () => {
-			const win = window as typeof window & { botpress?: any };
-			if (win.botpress) {
-				win.botpress.on('customEvent', (event: any) => {
-					console.log('Custom event triggered: ', event);
-					// Insert your code here
-					if (event.action === 'redirect') {
-						router.push(event.url);
-					}
-				});
-			} else {
-				// Retry after a short delay if Botpress isn't ready yet
-				setTimeout(setupBotpressEvents, 100);
-			}
-		};
-
-		setupBotpressEvents();
-	}, [router]); // Add router to dependencies
 
 	// Scroll to top function
 	const scrollToTop = () => {
@@ -872,12 +848,6 @@ export default function App() {
 					<ChevronUp size={24} />
 				</button>
 			)}
-
-			<script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
-			<script
-				src="https://files.bpcontent.cloud/2025/09/09/03/20250909033652-E1XCLYUC.js"
-				defer
-			></script>
 		</div>
 	);
 }
