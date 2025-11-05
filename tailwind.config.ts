@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 export default {
+  darkMode: 'class',
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -90,9 +91,32 @@ export default {
           '0%, 100%': { visibility: 'visible' },
           '50%': { visibility: 'hidden' },
         },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
+        'float-slow': {
+          '0%, 100%': { transform: 'translate(0, 0)' },
+          '33%': { transform: 'translate(30px, -30px)' },
+          '66%': { transform: 'translate(-20px, 20px)' },
+        },
       },
       animation: {
         blink: "blink 1s steps(1, start) infinite",
+        float: 'float 6s ease-in-out infinite',
+        'float-slow': 'float-slow 20s ease-in-out infinite',
+      },
+      transitionDelay: {
+        '100': '100ms',
+        '200': '200ms',
+        '300': '300ms',
+        '400': '400ms',
+        '500': '500ms',
+        '600': '600ms',
+        '700': '700ms',
+        '800': '800ms',
+        '900': '900ms',
+        '1000': '1000ms',
       },
       borderRadius: {
         'half': '8rem',

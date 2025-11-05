@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import BotpressBot from './components/BotpressBot';
+import ClientLayout from './components/ClientLayout';
 
 export const metadata: Metadata = {
 	title: 'Website Portfolio',
@@ -15,8 +16,6 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className="font-serif">
-				{children}
-
 				{/* Botpress Scripts - moved from page.tsx */}
 				<script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
 				<script
@@ -24,8 +23,11 @@ export default function RootLayout({
 					defer
 				></script>
 
-				{/* Botpress Event Handler */}
-				<BotpressBot />
+				<ClientLayout>
+					{children}
+					{/* Botpress Event Handler */}
+					<BotpressBot />
+				</ClientLayout>
 			</body>
 		</html>
 	);

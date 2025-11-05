@@ -5,14 +5,24 @@
 @layer base {
   body {
     font-family: 'Georgia', serif;
-    background-color: #FAFAF9;
+    background-color: #FAFAFA;
     color: #44403C;
+    cursor: none;
   }
-  
+
+  .dark body {
+    background-color: #171717;
+    color: #FAFAFA;
+  }
+
+  * {
+    cursor: none !important;
+  }
+
   .font-serif {
     font-family: 'Georgia', serif;
   }
-  
+
   /* Modern typography */
   h1, h2, h3, h4, h5, h6 {
     letter-spacing: -0.025em;
@@ -56,6 +66,15 @@
   .nav-link:hover {
     color: #171717;
     background-color: #F5F5F4;
+  }
+
+  .dark .nav-link {
+    color: #A3A3A3;
+  }
+
+  .dark .nav-link:hover {
+    color: #FAFAFA;
+    background-color: #262626;
   }
 
   .timeline::before {

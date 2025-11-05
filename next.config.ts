@@ -1,9 +1,9 @@
 const nextConfig = {
-  reactStrictMode: true,
-  images: {
-    unoptimized: true, // Disable default image optimization
-  },
-  output: 'export'
+	reactStrictMode: true,
+	images: {
+		unoptimized: true,
+	},
+	output: 'export',
 };
 
 export default nextConfig;
