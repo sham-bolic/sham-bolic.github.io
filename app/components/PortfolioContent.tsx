@@ -298,6 +298,8 @@ export default function PortfolioContent() {
 		const [currentImageIndex, setCurrentImageIndex] = useState(0);
 		const [nextImageIndex, setNextImageIndex] = useState(1);
 		const [mounted, setMounted] = useState(false);
+		const [displayedName, setDisplayedName] = useState('');
+		const [isTypingComplete, setIsTypingComplete] = useState(false);
 
 		const headshots = [
 			'/images/headshots/P1000837.jpg',
@@ -315,6 +317,26 @@ export default function PortfolioContent() {
 		useEffect(() => {
 			setMounted(true);
 		}, []);
+
+		// Typing effect for name
+		useEffect(() => {
+			if (!mounted) return;
+
+			const fullName = developerName;
+			let currentIndex = 0;
+
+			const typingInterval = setInterval(() => {
+				if (currentIndex <= fullName.length) {
+					setDisplayedName(fullName.slice(0, currentIndex));
+					currentIndex++;
+				} else {
+					setIsTypingComplete(true);
+					clearInterval(typingInterval);
+				}
+			}, 100); // Type one character every 100ms
+
+			return () => clearInterval(typingInterval);
+		}, [mounted]);
 
 		// Image cycling effect
 		useEffect(() => {
@@ -364,12 +386,15 @@ export default function PortfolioContent() {
 							/>
 						</div>
 					</div>
-					{/* Name - Animated with slight delay */}
+					{/* Name - Animated with typing effect */}
 					<h1
 						className={`text-4xl md:text-6xl lg:text-7xl font-bold font-serif mb-4 text-neutral-900 dark:text-neutral-100 tracking-tight transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
 						style={{ transitionDelay: '200ms' }}
 					>
-						{developerName}
+						{displayedName}
+						{!isTypingComplete && (
+							<span className="inline-block w-1 h-[0.9em] ml-1 bg-warm-500 animate-blink align-middle" />
+						)}
 					</h1>
 					{/* Title - Animated with more delay */}
 					<p
