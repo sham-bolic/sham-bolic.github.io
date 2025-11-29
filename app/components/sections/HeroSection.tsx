@@ -1,7 +1,11 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { developerName, developerTitle, heroTagline } from '@/app/data/portfolio';
+import {
+	developerName,
+	developerTitle,
+	heroTagline,
+} from '@/app/data/portfolio';
 
 export default function HeroSection() {
 	const ref = useRef(null);
@@ -71,7 +75,7 @@ export default function HeroSection() {
 		<section
 			id="home"
 			ref={ref}
-			className="min-h-screen flex items-center justify-center py-20 md:py-32 px-4"
+			className="min-h-screen flex items-center justify-center py-12 md:py-20 px-4"
 		>
 			<div className="relative z-10 text-center max-w-4xl mx-auto">
 				{/* Photo - Animated */}
@@ -167,4 +171,3 @@ export default function HeroSection() {
 		</section>
 	);
 }
-

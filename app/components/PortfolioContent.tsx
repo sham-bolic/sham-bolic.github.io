@@ -179,9 +179,9 @@ export default function PortfolioContent() {
 			{/* Main content area */}
 			<main className="relative z-10">
 				<HeroSection />
+				<ExperienceSection />
 				<ProjectsSection />
 				<SkillsSection />
-				<ExperienceSection />
 				<EducationSection />
 				<HobbiesSection />
 				<ContactSection />

@@ -8,13 +8,11 @@ export default function EducationSection() {
 	const isVisible = useOnScreen(ref, 0.1);
 
 	return (
-		<section id="education" ref={ref} className="py-20 md:py-32">
+		<section id="education" ref={ref} className="py-12 md:py-20">
 			<div className="container mx-auto px-4 max-w-7xl">
 				<h2
 					className={`section-title dark:text-neutral-100 transition-all duration-700 transform ${
-						isVisible
-							? 'opacity-100 translate-y-0'
-							: 'opacity-0 translate-y-10'
+						isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
 					}`}
 				>
 					Education
@@ -33,7 +31,7 @@ export default function EducationSection() {
 							<span className="timeline-dot bg-accent-500 hidden md:flex">
 								<span className="w-2 h-2 bg-white rounded-full"></span>
 							</span>
-							<div className="card p-8 hover:shadow-xl transition-all duration-300 dark:bg-neutral-800 dark:border-neutral-700">
+							<div className="card p-8 hover:shadow-xl transition-all duration-300 group dark:bg-neutral-800 dark:border-neutral-700">
 								<div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
 									<div className="flex-1">
 										<div className="text-sm text-accent-600 dark:text-accent-400 mb-2 font-semibold uppercase tracking-wider">
@@ -50,22 +48,27 @@ export default function EducationSection() {
 										<span className="text-2xl">🎓</span>
 									</div>
 								</div>
-								<div className="mt-6">
-									<p className="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4 font-semibold">
-										Relevant Coursework:
-									</p>
-									<div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-										{edu.coursework.map((course, i) => (
-											<div
-												key={i}
-												className="flex items-center text-neutral-600 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-700 px-3 py-2 rounded-lg"
-											>
-												<span className="text-accent-500 dark:text-accent-400 mr-2">
-													•
-												</span>
-												{course}
+
+								<div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-in-out">
+									<div className="overflow-hidden">
+										<div className="mt-6 pt-4 border-t border-neutral-200 dark:border-neutral-600">
+											<p className="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4 font-semibold">
+												Relevant Coursework:
+											</p>
+											<div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+												{edu.coursework.map((course, i) => (
+													<div
+														key={i}
+														className="flex items-center text-neutral-600 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-700 px-3 py-2 rounded-lg"
+													>
+														<span className="text-accent-500 dark:text-accent-400 mr-2">
+															•
+														</span>
+														{course}
+													</div>
+												))}
 											</div>
-										))}
+										</div>
 									</div>
 								</div>
 							</div>
@@ -76,4 +79,3 @@ export default function EducationSection() {
 		</section>
 	);
 }
-

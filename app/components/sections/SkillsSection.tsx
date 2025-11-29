@@ -8,13 +8,11 @@ export default function SkillsSection() {
 	const isVisible = useOnScreen(ref, 0.1);
 
 	return (
-		<section id="skills" ref={ref} className="py-20 md:py-32">
+		<section id="skills" ref={ref} className="py-12 md:py-20">
 			<div className="container mx-auto px-4 max-w-7xl">
 				<h2
 					className={`section-title dark:text-neutral-100 transition-all duration-700 transform ${
-						isVisible
-							? 'opacity-100 translate-y-0'
-							: 'opacity-0 translate-y-10'
+						isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
 					}`}
 				>
 					Technical Skills
@@ -53,4 +51,3 @@ export default function SkillsSection() {
 		</section>
 	);
 }
-

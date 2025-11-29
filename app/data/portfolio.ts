@@ -125,6 +125,7 @@ export const experience = [
 		id: 1,
 		title: 'Growth Engineer Intern',
 		company: 'Botpress',
+		logo: '/images/companyLogos/bp_icon.jpg',
 		date: 'Sep 2025 - Present',
 		description: [
 			'Enhance and expand our open-source integrations, including SharePoint, MailerLite, and Persat, with new features, improved stability, and broader capabilities.',
@@ -136,6 +137,7 @@ export const experience = [
 		id: 2,
 		title: 'Software Developer Intern',
 		company: 'Retail Realm',
+		logo: '/images/companyLogos/rr_icon.jpg',
 		date: 'May 2025 - Aug 2025',
 		description: [
 			'Designed and deployed an internal support automation tool using Azure Databricks and PySpark, building a scalable ETL pipeline to ingest and preprocess historical support tickets with NLP techniques.',

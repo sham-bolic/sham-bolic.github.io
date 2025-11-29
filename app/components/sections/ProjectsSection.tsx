@@ -9,13 +9,11 @@ export default function ProjectsSection() {
 	const isVisible = useOnScreen(ref, 0.1);
 
 	return (
-		<section id="projects" ref={ref} className="py-20 md:py-32">
+		<section id="projects" ref={ref} className="py-12 md:py-20">
 			<div className="container mx-auto px-4 max-w-7xl">
 				<h2
 					className={`section-title dark:text-neutral-100 transition-all duration-700 transform ${
-						isVisible
-							? 'opacity-100 translate-y-0'
-							: 'opacity-0 translate-y-10'
+						isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
 					}`}
 				>
 					Featured Projects
@@ -31,7 +29,7 @@ export default function ProjectsSection() {
 							}`}
 							style={{ transitionDelay: `${index * 100}ms` }}
 						>
-							<div className="flex justify-between items-start mb-6 gap-4">
+							<div className="flex justify-between items-start mb-4 gap-4">
 								<h3 className="text-xl lg:text-2xl font-bold text-neutral-900 dark:text-neutral-100 font-serif leading-tight flex-1">
 									{project.name}
 								</h3>
@@ -45,10 +43,8 @@ export default function ProjectsSection() {
 									<ExternalLink size={20} />
 								</a>
 							</div>
-							<p className="text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed flex-grow">
-								{project.description}
-							</p>
-							<div className="flex flex-wrap gap-2 mt-auto">
+
+							<div className="flex flex-wrap gap-2 mb-4">
 								{project.skills.map((skill, i) => (
 									<span
 										key={i}
@@ -58,6 +54,14 @@ export default function ProjectsSection() {
 									</span>
 								))}
 							</div>
+
+							<div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-in-out mt-auto">
+								<div className="overflow-hidden">
+									<p className="text-neutral-600 dark:text-neutral-400 leading-relaxed pt-4 border-t border-neutral-200 dark:border-neutral-600">
+										{project.description}
+									</p>
+								</div>
+							</div>
 						</div>
 					))}
 				</div>
@@ -65,4 +69,3 @@ export default function ProjectsSection() {
 		</section>
 	);
 }
-
