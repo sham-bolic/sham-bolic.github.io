@@ -15,6 +15,7 @@ type TimelineItem = {
 	description?: string[]; // for work
 	coursework?: string[]; // for education
 	logo?: string;
+	minor?: string; // for education
 	isGraduation?: boolean;
 	isStart?: boolean;
 };
@@ -28,7 +29,9 @@ export default function TimelineSection() {
 			id: `work-${job.id}`,
 			type: 'work',
 			date: job.date,
-			startDate: new Date(job.date.split(' - ')[0]),
+			startDate: job.date.startsWith('Upcoming')
+				? new Date(8640000000000000) // Max valid date to ensure it stays at top
+				: new Date(job.date.split(' - ')[0]),
 			title: job.title,
 			subtitle: job.company,
 			description: job.description,
@@ -44,12 +47,13 @@ export default function TimelineSection() {
 				{
 					id: `edu-${edu.id}-end`,
 					type: 'education',
-					date: endYear === 'Present' ? 'Present' : `June ${endYear}`,
+					date: endYear === 'Present' ? 'Present' : `Upcoming: June ${endYear}`,
 					startDate: new Date(
 						endYear === 'Present' ? new Date() : `${endYear}-06-01`
 					),
 					title: edu.degree,
 					subtitle: edu.institution,
+					minor: edu.minor, // Pass minor
 					coursework: edu.coursework, // Show coursework on graduation
 					logo: edu.logo, // Pass logo from data
 					isGraduation: true,
@@ -143,7 +147,7 @@ export default function TimelineSection() {
 													<div className="overflow-hidden">
 														<div className="pt-4 mt-2 border-t border-neutral-100 dark:border-neutral-700">
 															{item.description && (
-																<ul className="space-y-2 text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed list-none opacity-90 md:text-right">
+																<ul className="space-y-2 text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed list-disc list-outside ml-4 opacity-90 text-left">
 																	{item.description.map((point, i) => (
 																		<li key={i}>{point}</li>
 																	))}
@@ -200,6 +204,12 @@ export default function TimelineSection() {
 												<h3 className="text-xl font-bold text-neutral-900 dark:text-neutral-100 font-serif">
 													{item.title}
 												</h3>
+
+												{item.minor && (
+													<p className="text-sm text-neutral-500 dark:text-neutral-400 font-medium">
+														{item.minor}
+													</p>
+												)}
 
 												<div className="flex items-center gap-2 text-neutral-600 dark:text-neutral-400 font-medium italic">
 													{item.logo && (

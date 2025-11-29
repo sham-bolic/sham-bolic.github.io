@@ -122,6 +122,16 @@ export const skills = [
 
 export const experience = [
 	{
+		id: 3,
+		title: 'Growth Engineer Intern',
+		company: 'Botpress',
+		logo: '/images/icons/bp_icon.jpg',
+		date: 'Upcoming: Jun 2026 - Aug 2026',
+		description: [
+			'Upcoming internship focusing on growth engineering and user acquisition strategies.',
+		],
+	},
+	{
 		id: 1,
 		title: 'Growth Engineer Intern',
 		company: 'Botpress',
@@ -152,7 +162,8 @@ export const education = [
 	{
 		id: 1,
 		institution: 'McGill University',
-		degree: 'BSc Honors Computer Science / Minor Statistics',
+		degree: 'BSc Honors Computer Science',
+		minor: 'Minor Statistics',
 		years: '2022 - 2026',
 		logo: '/images/icons/mcgill_logo.svg',
 		coursework: [
