@@ -67,41 +67,44 @@ export default function PortfolioContent() {
 
 	// Populated content from the user's CV
 	const developerName = 'Maximillian Fong';
-	const developerTitle = 'U3 Honors Computer Science Major, Statistics Minor';
+	const developerTitle = 'Honors Computer Science Major, Statistics Minor';
 	const heroTagline =
-		'I am a third-year Computer Science student at McGill University, pursuing an Honors degree with a minor in Statistics. With a strong foundation in full-stack development and machine learning, I specialize in creating scalable applications and extracting insights from data. I am passionate about leveraging technology to solve real-world problems and am eager to contribute to innovative teams in the fields of software development, machine learning, and data science.';
+		'I am a final-year Computer Science student at McGill University, pursuing an Honors degree with a minor in Statistics. With a strong foundation in full-stack development and machine learning, I specialize in creating scalable applications and extracting insights from data. I am passionate about leveraging technology to solve real-world problems and am eager to contribute to innovative teams in the fields of software development, machine learning, and data science.';
 
 	const projects = [
 		{
 			id: 1,
-			name: 'Rainbow DQN Agent',
+			name: 'Modular Study of DQN Enhancements in Practice',
 			description:
-				'Implemented a Rainbow Deep Q-Network combining multiple DQN improvements including Double DQN, Dueling DQN, Prioritized Experience Replay, and Noisy Networks. The agent was trained on Atari games to demonstrate state-of-the-art reinforcement learning techniques and achieve superior performance compared to vanilla DQN.',
+				'Reimplemented Rainbow DQN from scratch in Python/PyTorch, integrating six core enhancements: Double Q-Learning, Prioritized Experience Replay, Dueling Networks, Noisy Networks, n-step returns and distributional C51. Achieved 60% convergence and 153.9 avg test reward on Seaquest (full Rainbow) vs. vanilla DQN, with ablations revealing Noisy Networks & PER as most critical for fast, stable learning.',
 			skills: [
 				'Python',
 				'PyTorch',
+				'Gymnasium',
+				'Numpy',
+				'Matplotlib',
 				'Reinforcement Learning',
-				'Deep Q-Learning',
-				'Atari',
 			],
 			link: 'https://github.com/Waterfountain10/rainbow_ablation_paper',
 		},
 		{
 			id: 2,
-			name: 'Poker Bot AI',
+			name: 'Turing Poker Bot',
 			description:
-				'Developed an intelligent poker bot using advanced game theory concepts and machine learning techniques. The bot analyzes opponent betting patterns, calculates pot odds, and makes strategic decisions based on hand strength and position.',
-			skills: [
-				'Python',
-				'Game Theory',
-				'Machine Learning',
-				'Monte Carlo',
-				'AI',
-			],
+				'Implemented real-time expectation calculations, factoring in the pot size, player ranges, and win probabilities to optimize decision-making. Utilized a moving average as a reinforcement learning concept, enabling the bot to adapt its strategy based on evolving opponent behaviors. Qualified for cash prizes in two rounds, demonstrating strong performance in a competitive setting.',
+			skills: ['Python', 'Poker Agent', 'Game Theory', 'Machine Learning'],
 			link: 'https://github.com/denis-tsariov/python-poker-bot/tree/mcgill-tournament',
 		},
 		{
 			id: 3,
+			name: 'Digit Recognition with CNN',
+			description:
+				'Achieved 86%+ accuracy in recognizing handwritten digits. Implemented techniques like batch normalization, data augmentation, and stochastic gradient descent to improve model performance and reduce overfitting.',
+			skills: ['Python', 'Numpy', 'PyTorch', 'Pandas', 'CNN'],
+			link: 'https://github.com/sham-bolic/number_classification_cnn',
+		},
+		{
+			id: 4,
 			name: 'BetterCV - AI-Powered CV Generator',
 			description:
 				'Developed a web app that generates job-specific CVs using AI to analyze job descriptions and rank user-provided skills and experiences. Built with React, TypeScript, Tailwind CSS, Drizzle ORM, and Postgres, the platform integrates Gemini AI for intelligent content selection.',
@@ -116,7 +119,7 @@ export default function PortfolioContent() {
 			link: 'https://devpost.com/software/bcv-hackmcwics25',
 		},
 		{
-			id: 4,
+			id: 5,
 			name: 'Meal Mates',
 			description:
 				'Developed a full-stack mobile app that allows users to swipe through food images from restaurants near them and curate a list of interested restaurants as well as match with friends on similar restaurants to try out together. The frontend uses React-Native and the backend is developed with Django-rest and SQLite3 database.',
@@ -130,20 +133,12 @@ export default function PortfolioContent() {
 			link: 'https://devpost.com/software/fooder-zx98kt',
 		},
 		{
-			id: 5,
+			id: 6,
 			name: 'AI Agent for Colosseum Game',
 			description:
 				'Developed an AI agent for the Colosseum game, incorporating custom heuristics to evaluate and navigate game states effectively. Implemented a Monte Carlo Search Tree combined with Multi-Armed Bandits to explore possible actions and determine the most optimal moves.',
 			skills: ['Python', 'Monte Carlo', 'AI', 'Game Theory'],
 			link: 'https://github.com/sham-bolic/AI_Final_Proj',
-		},
-		{
-			id: 6,
-			name: 'Digit Recognition CNN',
-			description:
-				'Developed a convolutional neural network achieving over 86.57% test accuracy by leveraging advanced techniques such as batch normalization, data augmentation, and stochastic gradient descent. These methods were implemented to prevent overfitting and improve generalization.',
-			skills: ['Python', 'PyTorch', 'CNN', 'Machine Learning'],
-			link: 'https://github.com/sham-bolic/number_classification_cnn',
 		},
 	];
 
@@ -159,10 +154,9 @@ export default function PortfolioContent() {
 				'C++',
 				'R',
 				'HTML/CSS',
-				'Unix',
 				'Git',
-				'MySQL',
-				'Bash',
+				'SQL',
+				'MATLAB',
 			],
 		},
 		{
@@ -174,8 +168,6 @@ export default function PortfolioContent() {
 				'React Native',
 				'Django Rest API',
 				'MUI',
-				'DrizzleORM',
-				'Streamlit',
 			],
 		},
 		{
@@ -186,45 +178,39 @@ export default function PortfolioContent() {
 				'Pandas',
 				'Scikit-learn',
 				'Matplotlib',
-				'Machine Learning',
-				'AI',
-				'ChromaDB',
+				'PySpark',
+				'HuggingFace transformers',
 				'LangChain',
 				'LangGraph',
-				'OpenAI API',
-				'Ollama',
 				'vLLM',
+				'OpenAI API',
 			],
-		},
-		{
-			category: 'Cloud / Infrastructure',
-			list: ['Azure', 'Azure Databricks', 'PySpark'],
 		},
 	];
 
 	const experience = [
 		{
 			id: 1,
-			title: 'Software Engineer Intern - Growth',
+			title: 'Growth Engineer Intern',
 			company: 'Botpress',
 			date: 'Sep 2025 - Present',
-			description: 'Develop integrations for external platforms.',
+			description: [
+				'Enhance and expand our open-source integrations, including SharePoint, MailerLite, and Persat, with new features, improved stability, and broader capabilities.',
+				'Run a pilot program and provide exceptional, hands-on support to a Team Plan customer to ensure successful adoption and valuable feedback.',
+				'Improve onboarding by developing a bot-building agent that helps users create, refine, and launch their bots more easily and intuitively, leading to higher user retention.',
+			],
 		},
 		{
 			id: 2,
 			title: 'Software Developer Intern',
 			company: 'Retail Realm',
 			date: 'May 2025 - Aug 2025',
-			description:
-				'Designed and deployed an internal support automation tool using Azure Databricks and PySpark. Implemented a Retrieval-Augmented Generation (RAG) system and an agentic chatbot to improve support team efficiency and reduce response time.',
-		},
-		{
-			id: 3,
-			title: 'Waiter',
-			company: 'Brit & Chips',
-			date: 'Mar 2022 - Oct 2023',
-			description:
-				'Provided excellent customer service in a fast-paced restaurant environment. Managed multiple tables simultaneously while maintaining high standards of service quality and customer satisfaction.',
+			description: [
+				'Designed and deployed an internal support automation tool using Azure Databricks and PySpark, building a scalable ETL pipeline to ingest and preprocess historical support tickets with NLP techniques.',
+				'Implemented a Retrieval-Augmented Generation (RAG) system with a Vector Database, enabling semantic search and contextual answer extraction from resolved tickets.',
+				'Benchmarked and deployed locally hosted LLMs using vLLM on a virtual machine, integrating OpenAI APIs to optimize performance for document-level data extraction and real-time support use cases.',
+				'Developed and integrated an agentic chatbot using LangGraph and LangChain, leveraging the RAG system to autonomously retrieve, reason, and respond, improving support team efficiency and reducing average response time.',
+			],
 		},
 	];
 
@@ -232,17 +218,17 @@ export default function PortfolioContent() {
 		{
 			id: 1,
 			institution: 'McGill University',
-			degree: 'BSc Honours Computer Science / Minor Statistics',
-			years: 'August 2022 - June 2026 (Expected)',
+			degree: 'BSc Honors Computer Science / Minor Statistics',
+			years: '2022 - 2026',
 			coursework: [
-				'Cryptography and Data Analysis',
-				'Fundamentals of Machine Learning',
 				'Artificial Intelligence',
-				'Applied Regression',
+				'Machine Learning',
+				'Reinforcement Learning',
+				'Time Series Analysis',
 				'Software Design',
-				'Statistics',
-				'Operating Systems',
-				'Honours Algorithm and Data Structures',
+				'Applied Regression',
+				'Cryptography and Data Security',
+				'Databases',
 			],
 		},
 	];
@@ -366,7 +352,11 @@ export default function PortfolioContent() {
 				<div className="relative z-10 text-center max-w-4xl mx-auto">
 					{/* Photo - Animated */}
 					<div
-						className={`mb-12 transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-10 scale-95'}`}
+						className={`mb-12 transition-all duration-1000 ${
+							mounted
+								? 'opacity-100 translate-y-0 scale-100'
+								: 'opacity-0 -translate-y-10 scale-95'
+						}`}
 						style={{ transitionDelay: '0ms' }}
 					>
 						<div className="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto">
@@ -382,13 +372,17 @@ export default function PortfolioContent() {
 								src={headshots[nextImageIndex]}
 								alt="Maximillian Fong's profile photo"
 								className="absolute inset-0 rounded-3xl shadow-2xl border-4 border-white dark:border-neutral-700 w-full h-full object-cover object-center transition-opacity duration-500"
-								style={{ opacity: nextImageIndex === currentImageIndex ? 0 : 1 }}
+								style={{
+									opacity: nextImageIndex === currentImageIndex ? 0 : 1,
+								}}
 							/>
 						</div>
 					</div>
 					{/* Name - Animated with typing effect */}
 					<h1
-						className={`text-4xl md:text-6xl lg:text-7xl font-bold font-serif mb-4 text-neutral-900 dark:text-neutral-100 tracking-tight transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+						className={`text-4xl md:text-6xl lg:text-7xl font-bold font-serif mb-4 text-neutral-900 dark:text-neutral-100 tracking-tight transition-all duration-1000 ${
+							mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+						}`}
 						style={{ transitionDelay: '200ms' }}
 					>
 						{displayedName}
@@ -398,21 +392,27 @@ export default function PortfolioContent() {
 					</h1>
 					{/* Title - Animated with more delay */}
 					<p
-						className={`text-xl md:text-2xl text-neutral-600 dark:text-neutral-300 mb-6 font-medium transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+						className={`text-xl md:text-2xl text-neutral-600 dark:text-neutral-300 mb-6 font-medium transition-all duration-1000 ${
+							mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+						}`}
 						style={{ transitionDelay: '300ms' }}
 					>
 						{developerTitle}
 					</p>
 					{/* Bio - Animated with even more delay */}
 					<p
-						className={`text-lg text-neutral-700 dark:text-neutral-400 max-w-2xl mx-auto mb-8 leading-relaxed transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+						className={`text-lg text-neutral-700 dark:text-neutral-400 max-w-2xl mx-auto mb-8 leading-relaxed transition-all duration-1000 ${
+							mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+						}`}
 						style={{ transitionDelay: '500ms' }}
 					>
 						{heroTagline}
 					</p>
 					{/* Buttons - Animated last */}
 					<div
-						className={`flex justify-center flex-wrap gap-4 transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+						className={`flex justify-center flex-wrap gap-4 transition-all duration-1000 ${
+							mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+						}`}
 						style={{ transitionDelay: '700ms' }}
 					>
 						<a
@@ -443,7 +443,9 @@ export default function PortfolioContent() {
 		return (
 			<section id="projects" ref={ref} className="py-20 md:py-32">
 				<div className="container mx-auto px-4 max-w-7xl">
-					<h2 className="section-title dark:text-neutral-100">Featured Projects</h2>
+					<h2 className="section-title dark:text-neutral-100">
+						Featured Projects
+					</h2>
 					<div
 						className={`grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 ${animationClasses}`}
 					>
@@ -497,12 +499,17 @@ export default function PortfolioContent() {
 		return (
 			<section id="skills" ref={ref} className="py-20 md:py-32">
 				<div className="container mx-auto px-4 max-w-7xl">
-					<h2 className="section-title dark:text-neutral-100">Technical Skills</h2>
+					<h2 className="section-title dark:text-neutral-100">
+						Technical Skills
+					</h2>
 					<div
 						className={`grid gap-8 grid-cols-1 lg:grid-cols-3 ${animationClasses}`}
 					>
 						{skills.map((skillGroup, index) => (
-							<div key={index} className="card p-6 h-full dark:bg-neutral-700 dark:border-neutral-600">
+							<div
+								key={index}
+								className="card p-6 h-full dark:bg-neutral-700 dark:border-neutral-600"
+							>
 								<div className="mb-5">
 									<h3 className="text-lg font-bold text-neutral-900 dark:text-neutral-100 font-serif mb-1">
 										{skillGroup.category}
@@ -537,7 +544,9 @@ export default function PortfolioContent() {
 		return (
 			<section id="experience" ref={ref} className="py-20 md:py-32">
 				<div className="container mx-auto px-4 max-w-7xl">
-					<h2 className="section-title dark:text-neutral-100">Work Experience</h2>
+					<h2 className="section-title dark:text-neutral-100">
+						Work Experience
+					</h2>
 					<div
 						className={`timeline relative md:border-l-2 border-neutral-200 dark:border-neutral-600 md:pl-8 ${animationClasses}`}
 					>
@@ -566,9 +575,11 @@ export default function PortfolioContent() {
 											<span className="text-2xl">💼</span>
 										</div>
 									</div>
-									<p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
-										{job.description}
-									</p>
+									<ul className="list-disc list-outside ml-5 space-y-2 text-neutral-700 dark:text-neutral-300 leading-relaxed">
+										{job.description.map((point, index) => (
+											<li key={index}>{point}</li>
+										))}
+									</ul>
 								</div>
 							</div>
 						))}
@@ -586,11 +597,7 @@ export default function PortfolioContent() {
 		}`;
 
 		return (
-			<section
-				id="education"
-				ref={ref}
-				className="py-20 md:py-32"
-			>
+			<section id="education" ref={ref} className="py-20 md:py-32">
 				<div className="container mx-auto px-4 max-w-7xl">
 					<h2 className="section-title dark:text-neutral-100">Education</h2>
 					<div
@@ -631,7 +638,9 @@ export default function PortfolioContent() {
 													key={i}
 													className="flex items-center text-neutral-600 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-700 px-3 py-2 rounded-lg"
 												>
-													<span className="text-accent-500 dark:text-accent-400 mr-2">•</span>
+													<span className="text-accent-500 dark:text-accent-400 mr-2">
+														•
+													</span>
 													{course}
 												</div>
 											))}
@@ -656,28 +665,36 @@ export default function PortfolioContent() {
 		return (
 			<section id="hobbies" ref={ref} className="py-20 md:py-32">
 				<div className="container mx-auto px-4 max-w-7xl">
-					<h2 className="section-title dark:text-neutral-100">Hobbies & Interests</h2>
+					<h2 className="section-title dark:text-neutral-100">
+						Hobbies & Interests
+					</h2>
 					<div
 						className={`grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ${animationClasses}`}
 					>
 						{hobbies.map((hobby) => (
 							<div
 								key={hobby.id}
-								className="card p-6 h-full flex flex-col group dark:bg-neutral-700 dark:border-neutral-600"
+								className="relative h-64 md:h-80 rounded-2xl overflow-hidden cursor-pointer group shadow-lg hover:shadow-2xl transition-all duration-500"
 							>
-								<div className="mb-6 overflow-hidden rounded-lg">
-									<img
-										src={hobby.image}
-										alt={hobby.name}
-										className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-									/>
+								{/* Background Image */}
+								<img
+									src={hobby.image}
+									alt={hobby.name}
+									className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+								/>
+
+								{/* Gradient Overlay - always visible for text readability */}
+								<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
+
+								{/* Content Container */}
+								<div className="absolute inset-0 p-6 flex flex-col justify-end">
+									<h3 className="text-2xl font-bold text-white font-serif mb-2 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+										{hobby.name}
+									</h3>
+									<p className="text-neutral-200 text-sm md:text-base leading-relaxed opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
+										{hobby.description}
+									</p>
 								</div>
-								<h3 className="text-xl lg:text-2xl font-bold text-neutral-900 dark:text-neutral-100 font-serif mb-4">
-									{hobby.name}
-								</h3>
-								<p className="text-neutral-600 dark:text-neutral-300 leading-relaxed flex-grow">
-									{hobby.description}
-								</p>
 							</div>
 						))}
 					</div>
@@ -697,7 +714,9 @@ export default function PortfolioContent() {
 			<section id="contact" ref={ref} className="py-20 md:py-32">
 				<div className="container mx-auto px-4 max-w-4xl">
 					<h2 className="section-title dark:text-neutral-100">Contact Me</h2>
-					<div className={`card p-12 ${animationClasses} dark:bg-neutral-800 dark:border-neutral-700`}>
+					<div
+						className={`card p-12 ${animationClasses} dark:bg-neutral-800 dark:border-neutral-700`}
+					>
 						<p className="text-lg text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed text-center">
 							Want to get in touch with me regarding any opportunities? Below
 							are all the possible ways to reach out to me!
@@ -773,7 +792,10 @@ export default function PortfolioContent() {
 			<nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl border-b border-neutral-200/50 dark:border-neutral-700/50 shadow-sm">
 				<div className="container mx-auto flex justify-between items-center px-6 py-3">
 					<h1 className="text-xl font-bold font-serif text-neutral-900 dark:text-neutral-100 tracking-tight">
-						<a href="#home" className="hover:text-warm-600 dark:hover:text-warm-400 transition-all duration-300 flex items-center gap-2">
+						<a
+							href="#home"
+							className="hover:text-warm-600 dark:hover:text-warm-400 transition-all duration-300 flex items-center gap-2"
+						>
 							<span className="w-2 h-2 bg-warm-500 rounded-full animate-pulse"></span>
 							{developerName}
 						</a>
@@ -783,37 +805,58 @@ export default function PortfolioContent() {
 					<div className="hidden md:flex items-center gap-2">
 						<ul className="flex items-center gap-1">
 							<li>
-								<a href="#home" className="px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50 rounded-lg transition-all duration-200">
+								<a
+									href="#home"
+									className="px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50 rounded-lg transition-all duration-200"
+								>
 									Home
 								</a>
 							</li>
 							<li>
-								<a href="#projects" className="px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50 rounded-lg transition-all duration-200">
+								<a
+									href="#projects"
+									className="px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50 rounded-lg transition-all duration-200"
+								>
 									Projects
 								</a>
 							</li>
 							<li>
-								<a href="#skills" className="px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50 rounded-lg transition-all duration-200">
+								<a
+									href="#skills"
+									className="px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50 rounded-lg transition-all duration-200"
+								>
 									Skills
 								</a>
 							</li>
 							<li>
-								<a href="#experience" className="px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50 rounded-lg transition-all duration-200">
+								<a
+									href="#experience"
+									className="px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50 rounded-lg transition-all duration-200"
+								>
 									Experience
 								</a>
 							</li>
 							<li>
-								<a href="#education" className="px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50 rounded-lg transition-all duration-200">
+								<a
+									href="#education"
+									className="px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50 rounded-lg transition-all duration-200"
+								>
 									Education
 								</a>
 							</li>
 							<li>
-								<a href="#hobbies" className="px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50 rounded-lg transition-all duration-200">
+								<a
+									href="#hobbies"
+									className="px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50 rounded-lg transition-all duration-200"
+								>
 									Hobbies
 								</a>
 							</li>
 							<li>
-								<a href="#contact" className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-warm-500 to-warm-600 hover:from-warm-600 hover:to-warm-700 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md">
+								<a
+									href="#contact"
+									className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-warm-500 to-warm-600 hover:from-warm-600 hover:to-warm-700 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md"
+								>
 									Contact
 								</a>
 							</li>
