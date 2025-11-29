@@ -5,6 +5,7 @@ import { useTheme } from './ThemeProvider';
 import DarkModeToggle from './DarkModeToggle';
 import { developerName } from '@/app/data/portfolio';
 import { useActiveSection } from '@/app/hooks/useActiveSection';
+import { useKillFeed } from './KillFeed';
 
 // Import section components
 import HeroSection from './sections/HeroSection';
@@ -21,6 +22,8 @@ export default function PortfolioContent() {
 	const [showScrollTop, setShowScrollTop] = useState(false);
 	// State for mobile menu
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+	// KillFeed hook
+	const { addKill } = useKillFeed();
 
 	// Active section tracking
 	const sections = [
@@ -89,6 +92,7 @@ export default function PortfolioContent() {
 											<a
 												href={`#${item.id}`}
 												className="px-4 py-2 text-sm font-medium font-sans text-white bg-gradient-to-r from-warm-500 to-warm-600 hover:from-warm-600 hover:to-warm-700 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md ml-2"
+												onClick={() => addKill(item.label, Math.random() > 0.8)}
 											>
 												{item.label}
 											</a>
@@ -105,6 +109,7 @@ export default function PortfolioContent() {
 													? 'text-neutral-900 dark:text-neutral-100 bg-neutral-100 dark:bg-neutral-800'
 													: 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50'
 											}`}
+											onClick={() => addKill(item.label)}
 										>
 											{item.label}
 										</a>
@@ -113,16 +118,31 @@ export default function PortfolioContent() {
 							})}
 						</ul>
 						<div className="ml-2 pl-2 border-l border-neutral-200 dark:border-neutral-700">
-							<DarkModeToggle isDark={isDark} toggle={toggleTheme} />
+							<DarkModeToggle
+								isDark={isDark}
+								toggle={() => {
+									toggleTheme();
+									addKill(isDark ? 'Light Mode' : 'Dark Mode', true);
+								}}
+							/>
 						</div>
 					</div>
 
 					{/* Mobile Menu Button and Dark Mode Toggle */}
 					<div className="md:hidden flex items-center gap-2">
-						<DarkModeToggle isDark={isDark} toggle={toggleTheme} />
+						<DarkModeToggle
+							isDark={isDark}
+							toggle={() => {
+								toggleTheme();
+								addKill(isDark ? 'Light Mode' : 'Dark Mode', true);
+							}}
+						/>
 						<button
 							className="p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
-							onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+							onClick={() => {
+								setIsMobileMenuOpen(!isMobileMenuOpen);
+								addKill('Mobile Menu');
+							}}
 							aria-label="Toggle mobile menu"
 						>
 							{isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -144,7 +164,10 @@ export default function PortfolioContent() {
 											<a
 												href={`#${item.id}`}
 												className="block px-4 py-3 text-sm font-medium font-sans text-center text-white bg-gradient-to-r from-warm-500 to-warm-600 hover:from-warm-600 hover:to-warm-700 rounded-lg transition-all duration-200 shadow-sm"
-												onClick={() => setIsMobileMenuOpen(false)}
+												onClick={() => {
+													setIsMobileMenuOpen(false);
+													addKill(item.label, true);
+												}}
 											>
 												{item.label}
 											</a>
@@ -161,7 +184,10 @@ export default function PortfolioContent() {
 													? 'text-neutral-900 dark:text-neutral-100 bg-neutral-100 dark:bg-neutral-800'
 													: 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100/80 dark:hover:bg-neutral-800/80 hover:text-neutral-900 dark:hover:text-neutral-100'
 											}`}
-											onClick={() => setIsMobileMenuOpen(false)}
+											onClick={() => {
+												setIsMobileMenuOpen(false);
+												addKill(item.label);
+											}}
 										>
 											{item.label}
 										</a>
@@ -196,7 +222,10 @@ export default function PortfolioContent() {
 			{/* Scroll to Top Button */}
 			{showScrollTop && (
 				<button
-					onClick={scrollToTop}
+					onClick={() => {
+						scrollToTop();
+						addKill('Top of Page', true);
+					}}
 					className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-warm-500 text-white shadow-lg hover:bg-warm-600 transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-warm-500/50"
 					aria-label="Scroll to top"
 				>

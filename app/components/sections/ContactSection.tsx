@@ -3,10 +3,12 @@ import React, { useRef } from 'react';
 import Image from 'next/image';
 import { Mail, Github, Linkedin, ExternalLink } from 'lucide-react';
 import useOnScreen from '@/app/hooks/useOnScreen';
+import { useKillFeed } from '@/app/components/KillFeed';
 
 export default function ContactSection() {
 	const ref = useRef(null);
 	const isVisible = useOnScreen(ref, 0.1);
+	const { addKill } = useKillFeed();
 
 	return (
 		<section id="contact" ref={ref} className="py-12 md:py-20">
@@ -48,6 +50,7 @@ export default function ContactSection() {
 									<a
 										href="https://www.linkedin.com/in/maximillian-fong-8b8577294/"
 										className="text-accent-600 dark:text-accent-400 hover:text-accent-700 dark:hover:text-accent-300 transition-colors font-medium"
+										onClick={() => addKill('LinkedIn Profile', true)}
 									>
 										LinkedIn Profile
 									</a>
@@ -59,6 +62,7 @@ export default function ContactSection() {
 									<a
 										href="https://github.com/sham-bolic"
 										className="text-neutral-600 dark:text-neutral-300 hover:text-neutral-800 dark:hover:text-neutral-100 transition-colors font-medium"
+										onClick={() => addKill('GitHub Profile', true)}
 									>
 										GitHub Profile
 									</a>
@@ -70,6 +74,7 @@ export default function ContactSection() {
 									<a
 										href="https://devpost.com/sham-bolic?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav"
 										className="text-warm-600 dark:text-warm-400 hover:text-warm-700 dark:hover:text-warm-300 transition-colors font-medium"
+										onClick={() => addKill('Devpost Profile', true)}
 									>
 										Devpost Profile
 									</a>

@@ -6,6 +6,7 @@ import {
 	developerTitle,
 	heroTagline,
 } from '@/app/data/portfolio';
+import { useKillFeed } from '@/app/components/KillFeed';
 
 export default function HeroSection() {
 	const ref = useRef(null);
@@ -14,6 +15,7 @@ export default function HeroSection() {
 	const [mounted, setMounted] = useState(false);
 	const [displayedName, setDisplayedName] = useState('');
 	const [isTypingComplete, setIsTypingComplete] = useState(false);
+	const { addKill } = useKillFeed();
 
 	const headshots = [
 		'/images/headshots/P1000837.jpg',
@@ -157,12 +159,14 @@ export default function HeroSection() {
 					<a
 						href="#projects"
 						className="px-8 py-3 rounded-full font-semibold text-white bg-gradient-to-r from-warm-500 to-warm-600 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+						onClick={() => addKill('View My Work')}
 					>
 						View My Work
 					</a>
 					<a
 						href="#contact"
 						className="px-8 py-3 rounded-full font-semibold text-neutral-700 dark:text-neutral-300 border-2 border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-700 hover:border-neutral-400 dark:hover:border-neutral-500"
+						onClick={() => addKill('Get In Touch')}
 					>
 						Get In Touch
 					</a>
