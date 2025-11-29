@@ -2,13 +2,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 export default function CustomCursor() {
-	const cursorDotRef = useRef<HTMLDivElement>(null);
-	const cursorRingRef = useRef<HTMLDivElement>(null);
+	const cursorRef = useRef<HTMLDivElement>(null);
 	const [isPointer, setIsPointer] = useState(false);
 	const [isVisible, setIsVisible] = useState(false);
 	const mousePos = useRef({ x: 0, y: 0 });
 	const cursorPos = useRef({ x: 0, y: 0 });
-	const ringPos = useRef({ x: 0, y: 0 });
 
 	useEffect(() => {
 		const updateCursor = (e: MouseEvent) => {
@@ -18,8 +16,8 @@ export default function CustomCursor() {
 			const target = e.target as HTMLElement;
 			setIsPointer(
 				window.getComputedStyle(target).cursor === 'pointer' ||
-				target.tagName === 'A' ||
-				target.tagName === 'BUTTON'
+					target.tagName === 'A' ||
+					target.tagName === 'BUTTON'
 			);
 		};
 
@@ -31,19 +29,12 @@ export default function CustomCursor() {
 
 		// Smooth animation loop
 		const animate = () => {
-			// Lerp for smooth following
-			cursorPos.current.x += (mousePos.current.x - cursorPos.current.x) * 0.2;
-			cursorPos.current.y += (mousePos.current.y - cursorPos.current.y) * 0.2;
+			// Faster lerp for gaming feel
+			cursorPos.current.x += (mousePos.current.x - cursorPos.current.x) * 0.4;
+			cursorPos.current.y += (mousePos.current.y - cursorPos.current.y) * 0.4;
 
-			ringPos.current.x += (mousePos.current.x - ringPos.current.x) * 0.1;
-			ringPos.current.y += (mousePos.current.y - ringPos.current.y) * 0.1;
-
-			if (cursorDotRef.current) {
-				cursorDotRef.current.style.transform = `translate(${cursorPos.current.x}px, ${cursorPos.current.y}px) translate(-50%, -50%)`;
-			}
-
-			if (cursorRingRef.current) {
-				cursorRingRef.current.style.transform = `translate(${ringPos.current.x}px, ${ringPos.current.y}px) translate(-50%, -50%)`;
+			if (cursorRef.current) {
+				cursorRef.current.style.transform = `translate(${cursorPos.current.x}px, ${cursorPos.current.y}px) translate(-50%, -50%)`;
 			}
 
 			requestAnimationFrame(animate);
@@ -59,41 +50,41 @@ export default function CustomCursor() {
 
 	return (
 		<>
-			{/* Main cursor dot */}
 			<div
-				ref={cursorDotRef}
+				ref={cursorRef}
 				className="fixed pointer-events-none z-[9999] will-change-transform"
 				style={{
 					opacity: isVisible ? 1 : 0,
 					transition: 'opacity 0.3s ease',
 				}}
 			>
+				{/* Top Line */}
 				<div
-					className={`w-2 h-2 rounded-full transition-all duration-200 ${
-						isPointer ? 'bg-warm-600 scale-150' : 'bg-warm-500 scale-100'
+					className={`absolute left-1/2 -translate-x-1/2 bg-[#00FF00] transition-all duration-150 shadow-[0_0_0_1px_#000000] ${
+						isPointer ? 'w-0.5 h-2 -top-4' : 'w-0.5 h-1.5 -top-2.5'
+					}`}
+				/>
+				{/* Bottom Line */}
+				<div
+					className={`absolute left-1/2 -translate-x-1/2 bg-[#00FF00] transition-all duration-150 shadow-[0_0_0_1px_#000000] ${
+						isPointer ? 'w-0.5 h-2 top-2' : 'w-0.5 h-1.5 top-1'
+					}`}
+				/>
+				{/* Left Line */}
+				<div
+					className={`absolute top-1/2 -translate-y-1/2 bg-[#00FF00] transition-all duration-150 shadow-[0_0_0_1px_#000000] ${
+						isPointer ? 'w-2 h-0.5 -left-4' : 'w-1.5 h-0.5 -left-2.5'
+					}`}
+				/>
+				{/* Right Line */}
+				<div
+					className={`absolute top-1/2 -translate-y-1/2 bg-[#00FF00] transition-all duration-150 shadow-[0_0_0_1px_#000000] ${
+						isPointer ? 'w-2 h-0.5 left-2' : 'w-1.5 h-0.5 left-1'
 					}`}
 				/>
 			</div>
 
-			{/* Cursor ring */}
-			<div
-				ref={cursorRingRef}
-				className="fixed pointer-events-none z-[9998] will-change-transform"
-				style={{
-					opacity: isVisible ? 0.5 : 0,
-					transition: 'opacity 0.3s ease',
-				}}
-			>
-				<div
-					className={`w-8 h-8 rounded-full border-2 transition-all duration-300 ${
-						isPointer
-							? 'border-warm-500 scale-150'
-							: 'border-warm-400 dark:border-warm-500 scale-100'
-					}`}
-				/>
-			</div>
-
-			{/* Trailing particles */}
+			{/* Trailing particles - updated to match green theme but very subtle */}
 			<TrailingParticles mousePos={mousePos} isVisible={isVisible} />
 		</>
 	);
@@ -113,7 +104,7 @@ function TrailingParticles({
 		if (!isVisible) return;
 
 		// Initialize trail positions
-		for (let i = 0; i < 8; i++) {
+		for (let i = 0; i < 5; i++) {
 			if (!trailPositions.current[i]) {
 				trailPositions.current[i] = { x: 0, y: 0 };
 			}
@@ -123,15 +114,25 @@ function TrailingParticles({
 			// Update first particle to follow mouse with delay
 			const delay = 0.15;
 			trailPositions.current[0] = {
-				x: trailPositions.current[0].x + (mousePos.current.x - trailPositions.current[0].x) * delay,
-				y: trailPositions.current[0].y + (mousePos.current.y - trailPositions.current[0].y) * delay,
+				x:
+					trailPositions.current[0].x +
+					(mousePos.current.x - trailPositions.current[0].x) * delay,
+				y:
+					trailPositions.current[0].y +
+					(mousePos.current.y - trailPositions.current[0].y) * delay,
 			};
 
 			// Each particle follows the previous one
-			for (let i = 1; i < 8; i++) {
+			for (let i = 1; i < 5; i++) {
 				trailPositions.current[i] = {
-					x: trailPositions.current[i].x + (trailPositions.current[i - 1].x - trailPositions.current[i].x) * delay,
-					y: trailPositions.current[i].y + (trailPositions.current[i - 1].y - trailPositions.current[i].y) * delay,
+					x:
+						trailPositions.current[i].x +
+						(trailPositions.current[i - 1].x - trailPositions.current[i].x) *
+							delay,
+					y:
+						trailPositions.current[i].y +
+						(trailPositions.current[i - 1].y - trailPositions.current[i].y) *
+							delay,
 				};
 			}
 
@@ -139,8 +140,10 @@ function TrailingParticles({
 			particlesRef.current.forEach((particle, index) => {
 				if (particle && trailPositions.current[index]) {
 					const pos = trailPositions.current[index];
-					particle.style.transform = `translate(${pos.x}px, ${pos.y}px) translate(-50%, -50%) scale(${1 - index / 8})`;
-					particle.style.opacity = `${(1 - index / 8) * 0.4}`;
+					particle.style.transform = `translate(${pos.x}px, ${
+						pos.y
+					}px) translate(-50%, -50%) scale(${1 - index / 5})`;
+					particle.style.opacity = `${(1 - index / 5) * 0.3}`;
 				}
 			});
 
@@ -156,7 +159,7 @@ function TrailingParticles({
 
 	return (
 		<>
-			{Array.from({ length: 8 }).map((_, index) => (
+			{Array.from({ length: 5 }).map((_, index) => (
 				<div
 					key={index}
 					ref={(el) => {
@@ -164,11 +167,11 @@ function TrailingParticles({
 					}}
 					className="fixed pointer-events-none z-[9997] will-change-transform"
 					style={{
-						opacity: isVisible ? 0.4 : 0,
+						opacity: isVisible ? 0.3 : 0,
 						transition: 'opacity 0.3s ease',
 					}}
 				>
-					<div className="w-1.5 h-1.5 rounded-full bg-warm-400 dark:bg-warm-500" />
+					<div className="w-1 h-1 rounded-full bg-[#00FF00]" />
 				</div>
 			))}
 		</>
