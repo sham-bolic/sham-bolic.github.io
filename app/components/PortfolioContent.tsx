@@ -10,8 +10,7 @@ import { useActiveSection } from '@/app/hooks/useActiveSection';
 import HeroSection from './sections/HeroSection';
 import ProjectsSection from './sections/ProjectsSection';
 import SkillsSection from './sections/SkillsSection';
-import ExperienceSection from './sections/ExperienceSection';
-import EducationSection from './sections/EducationSection';
+import TimelineSection from './sections/TimelineSection';
 import HobbiesSection from './sections/HobbiesSection';
 import ContactSection from './sections/ContactSection';
 
@@ -26,10 +25,9 @@ export default function PortfolioContent() {
 	// Active section tracking
 	const sections = [
 		'home',
+		'timeline',
 		'projects',
 		'skills',
-		'experience',
-		'education',
 		'hobbies',
 		'contact',
 	];
@@ -56,10 +54,9 @@ export default function PortfolioContent() {
 	// Navigation Items
 	const navItems = [
 		{ id: 'home', label: 'Home' },
+		{ id: 'timeline', label: 'Timeline' },
 		{ id: 'projects', label: 'Projects' },
 		{ id: 'skills', label: 'Skills' },
-		{ id: 'experience', label: 'Experience' },
-		{ id: 'education', label: 'Education' },
 		{ id: 'hobbies', label: 'Hobbies' },
 		{ id: 'contact', label: 'Contact' },
 	];
@@ -179,10 +176,9 @@ export default function PortfolioContent() {
 			{/* Main content area */}
 			<main className="relative z-10">
 				<HeroSection />
-				<ExperienceSection />
+				<TimelineSection />
 				<ProjectsSection />
 				<SkillsSection />
-				<EducationSection />
 				<HobbiesSection />
 				<ContactSection />
 			</main>
