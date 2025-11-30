@@ -97,11 +97,15 @@ export default function HeroSection() {
 					}`}
 					style={{ transitionDelay: '0ms' }}
 				>
-					<div 
+					<div
 						className="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto cursor-pointer group perspective-1000"
 						onClick={handleKill}
 					>
-						<div className={`relative w-full h-full transition-transform duration-700 preserve-3d ${isDead ? 'rotate-y-180' : ''}`}>
+						<div
+							className={`relative w-full h-full transition-transform duration-700 preserve-3d ${
+								isDead ? 'rotate-y-180' : ''
+							}`}
+						>
 							{/* Front Face (Photos) */}
 							<div className="absolute inset-0 backface-hidden">
 								<div className="relative w-full h-full">
@@ -137,8 +141,10 @@ export default function HeroSection() {
 
 							{/* Back Face (Dead State) */}
 							<div className="absolute inset-0 backface-hidden rotate-y-180">
-								<div className="w-full h-full rounded-3xl shadow-2xl border-4 border-neutral-900 bg-neutral-900 flex items-center justify-center overflow-hidden">
-									<span className="text-[150px] md:text-[180px] select-none animate-pulse leading-none">😵</span>
+								<div className="w-full h-full rounded-3xl shadow-2xl border-4 flex items-center justify-center overflow-hidden">
+									<span className="text-[150px] md:text-[180px] select-none animate-pulse leading-none">
+										😵
+									</span>
 								</div>
 							</div>
 						</div>
