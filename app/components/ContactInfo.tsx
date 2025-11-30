@@ -6,17 +6,14 @@ export default function ContactInfo() {
 	const { addKill } = useKillFeed();
 
 	return (
-		<div className="space-y-8">
+		<div className="space-y-8 text-center h-full flex flex-col justify-center">
 			<div>
-				<p className="text-lg text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed">
+				<p className="text-lg text-neutral-600 dark:text-neutral-400 mb-12 leading-relaxed">
 					Want to get in touch regarding opportunities? Feel free to reach out
 					through any of the channels below or send me a direct message!
 				</p>
-				<h3 className="text-2xl font-bold text-neutral-800 dark:text-neutral-200 mb-6">
-					Maximillian Fong
-				</h3>
-				<div className="space-y-4">
-					<div className="flex items-center space-x-3">
+				<div className="space-y-6">
+					<div className="flex items-center justify-center space-x-3">
 						<div className="p-2 rounded-lg bg-warm-100 dark:bg-warm-900/30">
 							<Mail className="w-5 h-5 text-warm-600 dark:text-warm-400" />
 						</div>
@@ -24,7 +21,7 @@ export default function ContactInfo() {
 							fongcymax@gmail.com
 						</span>
 					</div>
-					<div className="flex items-center space-x-3">
+					<div className="flex items-center justify-center space-x-3">
 						<div className="p-2 rounded-lg bg-accent-100 dark:bg-accent-900/30">
 							<Linkedin className="w-5 h-5 text-accent-600 dark:text-accent-400" />
 						</div>
@@ -38,7 +35,7 @@ export default function ContactInfo() {
 							LinkedIn Profile
 						</a>
 					</div>
-					<div className="flex items-center space-x-3">
+					<div className="flex items-center justify-center space-x-3">
 						<div className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-700">
 							<Github className="w-5 h-5 text-neutral-600 dark:text-neutral-300" />
 						</div>
@@ -52,7 +49,7 @@ export default function ContactInfo() {
 							GitHub Profile
 						</a>
 					</div>
-					<div className="flex items-center space-x-3">
+					<div className="flex items-center justify-center space-x-3">
 						<div className="p-2 rounded-lg bg-warm-100 dark:bg-warm-900/30">
 							<ExternalLink className="w-5 h-5 text-warm-600 dark:text-warm-400" />
 						</div>
@@ -71,4 +68,3 @@ export default function ContactInfo() {
 		</div>
 	);
 }
-
