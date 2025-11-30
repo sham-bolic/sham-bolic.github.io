@@ -8,7 +8,9 @@ export const projects = [
 		id: 1,
 		name: 'Modular Study of DQN Enhancements in Practice',
 		description:
-			'Reimplemented Rainbow DQN from scratch in Python/PyTorch, integrating six core enhancements: Double Q-Learning, Prioritized Experience Replay, Dueling Networks, Noisy Networks, n-step returns and distributional C51. Achieved 60% convergence and 153.9 avg test reward on Seaquest (full Rainbow) vs. vanilla DQN, with ablations revealing Noisy Networks & PER as most critical for fast, stable learning.',
+			'Reimplemented Rainbow DQN from scratch in Python/PyTorch, achieving 60% faster convergence and superior rewards on Seaquest compared to vanilla DQN.',
+		detailedDescription:
+			"This project is a comprehensive reproduction and analysis of the Rainbow DQN architecture, a state-of-the-art reinforcement learning algorithm. I implemented the system from scratch using Python and PyTorch, methodically integrating six key enhancements to the standard DQN algorithm:\n\n• Double Q-Learning to reduce overestimation bias.\n• Prioritized Experience Replay (PER) to learn more frequently from important transitions.\n• Dueling Network Architectures to separately estimate state value and advantage.\n• Noisy Networks for better exploration.\n• Multi-step (n-step) returns for faster propagation of rewards.\n• Distributional RL (C51) to model the distribution of returns.\n\nThe agent was tested on the Atari 'Seaquest' environment. The full Rainbow implementation achieved 60% faster convergence and a significantly higher average test reward (153.9) compared to a vanilla DQN baseline. Furthermore, I conducted ablation studies which highlighted that Noisy Networks and PER were the most impactful components for achieving fast and stable learning in this domain.",
 		skills: [
 			'Python',
 			'PyTorch',
@@ -23,7 +25,9 @@ export const projects = [
 		id: 2,
 		name: 'Turing Poker Bot',
 		description:
-			'Implemented real-time expectation calculations, factoring in the pot size, player ranges, and win probabilities to optimize decision-making. Utilized a moving average as a reinforcement learning concept, enabling the bot to adapt its strategy based on evolving opponent behaviors. Qualified for cash prizes in two rounds, demonstrating strong performance in a competitive setting.',
+			'Built a poker bot with real-time EV calculation and adaptive opponent modeling that qualified for cash prizes in a competitive tournament.',
+		detailedDescription:
+			"Developed for the McGill Physics Hackathon/Tournament, this poker bot is designed to play Texas Hold'em autonomously. The core logic involves real-time calculation of Expected Value (EV) by analyzing pot odds, estimating opponent hand ranges, and simulating win probabilities.\n\nTo handle dynamic opponents, I implemented an adaptive strategy using moving averages of opponent actions to model their aggression and looseness. This allows the bot to shift between conservative and aggressive playstyles based on the table dynamics. The bot successfully competed against other student-made agents, qualifying for cash prizes in two separate rounds, proving its robustness in a competitive environment.",
 		skills: ['Python', 'Poker Agent', 'Game Theory', 'Machine Learning'],
 		link: 'https://github.com/denis-tsariov/python-poker-bot/tree/mcgill-tournament',
 	},
@@ -31,7 +35,9 @@ export const projects = [
 		id: 3,
 		name: 'Digit Recognition with CNN',
 		description:
-			'Achieved 86%+ accuracy in recognizing handwritten digits. Implemented techniques like batch normalization, data augmentation, and stochastic gradient descent to improve model performance and reduce overfitting.',
+			'Designed and trained a CNN for handwritten digit recognition, achieving 86%+ accuracy using PyTorch and optimization techniques.',
+		detailedDescription:
+			"A deep learning project focused on computer vision, specifically the classification of handwritten digits. I designed and trained a Convolutional Neural Network (CNN) using PyTorch.\n\nKey features of the implementation include:\n• Custom CNN architecture with multiple convolutional and pooling layers.\n• Batch Normalization to stabilize learning and allow higher learning rates.\n• Data Augmentation techniques (rotation, shifting) to increase dataset diversity and robustness.\n• Optimization via Stochastic Gradient Descent (SGD) with momentum.\n\nThe final model achieved over 86% accuracy on the test set, demonstrating effective handling of overfitting and generalization.",
 		skills: ['Python', 'Numpy', 'PyTorch', 'Pandas', 'CNN'],
 		link: 'https://github.com/sham-bolic/number_classification_cnn',
 	},
@@ -39,7 +45,9 @@ export const projects = [
 		id: 4,
 		name: 'BetterCV - AI-Powered CV Generator',
 		description:
-			'Developed a web app that generates job-specific CVs using AI to analyze job descriptions and rank user-provided skills and experiences. Built with React, TypeScript, Tailwind CSS, Drizzle ORM, and Postgres, the platform integrates Gemini AI for intelligent content selection.',
+			'Created an AI-powered web app that generates tailored CVs by analyzing job descriptions and user profiles with Google Gemini AI.',
+		detailedDescription:
+			"BetterCV is an AI-powered tool built to solve the tedious process of tailoring resumes for every job application. Created during a hackathon (McWiCS 2025), this web application takes a user's master profile (skills, experience, projects) and a specific job description as input.\n\nUsing Google's Gemini AI, the system analyzes the job requirements and intelligently selects and ranks the user's most relevant experiences. It then generates a formatted, job-specific CV.\n\nThe technical stack includes:\n• Frontend: React with TypeScript and Tailwind CSS for a responsive UI.\n• Backend: Node.js with Drizzle ORM and PostgreSQL for data management.\n• AI Integration: Gemini AI API for natural language processing and content generation.\n\nThe project demonstrates a practical application of LLMs in automating career-related tasks.",
 		skills: [
 			'React',
 			'TypeScript',
@@ -54,7 +62,9 @@ export const projects = [
 		id: 5,
 		name: 'Meal Mates',
 		description:
-			'Developed a full-stack mobile app that allows users to swipe through food images from restaurants near them and curate a list of interested restaurants as well as match with friends on similar restaurants to try out together. The frontend uses React-Native and the backend is developed with Django-rest and SQLite3 database.',
+			"Developed 'Meal Mates', a React Native mobile app for social dining that matches friends with nearby restaurants using a swipe interface.",
+		detailedDescription:
+			"Meal Mates is a 'Tinder for Food' style mobile application designed to make deciding where to eat fun and social. Users can browse food photos from nearby restaurants and swipe right to 'like' or left to 'pass'.\n\nThe app's social feature allows friends to link accounts; when two friends like the same restaurant, it creates a 'match', suggesting a place for them to dine together.\n\nTechnical details:\n• Frontend: Built with React Native for cross-platform mobile compatibility.\n• Backend: A robust REST API developed with Django and Django REST Framework.\n• Database: SQLite3 for data storage (restaurant data, user preferences, matches).\n• Geolocation: Integration with location services to find nearby dining options.",
 		skills: [
 			'React Native',
 			'Django Rest API',
@@ -68,7 +78,9 @@ export const projects = [
 		id: 6,
 		name: 'AI Agent for Colosseum Game',
 		description:
-			'Developed an AI agent for the Colosseum game, incorporating custom heuristics to evaluate and navigate game states effectively. Implemented a Monte Carlo Search Tree combined with Multi-Armed Bandits to explore possible actions and determine the most optimal moves.',
+			'Engineered an AI agent for the Colosseum game using Monte Carlo Tree Search and custom heuristics, outperforming random and student agents.',
+		detailedDescription:
+			"This project involved creating an autonomous agent to play 'Colosseum', a strategy board game. The goal was to develop an AI capable of beating both random agents and other student-developed AIs.\n\nThe core of the agent is built on Monte Carlo Tree Search (MCTS), which allows it to simulate thousands of future game states to determine the best move. To balance exploration (trying new moves) and exploitation (using known good moves), I integrated the Upper Confidence Bound applied to Trees (UCT) algorithm, a form of Multi-Armed Bandit problem solving.\n\nI also designed custom heuristics to evaluate non-terminal board states, helping the agent make better decisions even when it couldn't simulate to the very end of the game. This combination of MCTS and domain-specific heuristics resulted in a highly competitive agent.",
 		skills: ['Python', 'Monte Carlo', 'AI', 'Game Theory'],
 		link: 'https://github.com/sham-bolic/AI_Final_Proj',
 	},

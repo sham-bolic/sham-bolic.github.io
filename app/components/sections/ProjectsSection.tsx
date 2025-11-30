@@ -1,12 +1,23 @@
 'use client';
-import React, { useRef } from 'react';
-import { ExternalLink } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { ExternalLink, MoreHorizontal } from 'lucide-react';
 import useOnScreen from '@/app/hooks/useOnScreen';
 import { projects } from '@/app/data/portfolio';
+import ProjectModal from '../ProjectModal';
+import { useKillFeed } from '@/app/components/KillFeed';
 
 export default function ProjectsSection() {
 	const ref = useRef<HTMLElement>(null);
 	const isVisible = useOnScreen(ref, 0.1);
+	const [selectedProject, setSelectedProject] = useState<
+		(typeof projects)[0] | null
+	>(null);
+	const { addKill } = useKillFeed();
+
+	const handleProjectClick = (project: (typeof projects)[0]) => {
+		setSelectedProject(project);
+		addKill(`Checked out ${project.name}`, true);
+	};
 
 	return (
 		<section id="projects" ref={ref} className="py-12 md:py-20">
@@ -18,54 +29,58 @@ export default function ProjectsSection() {
 				>
 					Featured Projects
 				</h2>
-				<div className="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+				<div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 					{projects.map((project, index) => (
 						<div
 							key={project.id}
-							className={`card p-8 h-full flex flex-col group dark:bg-neutral-800 dark:border-neutral-700 transition-all duration-700 transform ${
+							onClick={() => handleProjectClick(project)}
+							className={`card p-6 h-full flex flex-col cursor-pointer group dark:bg-neutral-800 dark:border-neutral-700 transition-all duration-700 transform hover:-translate-y-1 hover:shadow-xl ${
 								isVisible
 									? 'opacity-100 translate-y-0'
 									: 'opacity-0 translate-y-10'
 							}`}
 							style={{ transitionDelay: `${index * 100}ms` }}
 						>
-							<div className="flex justify-between items-start mb-4 gap-4">
-								<h3 className="text-xl lg:text-2xl font-bold text-neutral-900 dark:text-neutral-100 font-serif leading-tight flex-1">
+							<div className="flex justify-between items-start mb-3 gap-4">
+								<h3 className="text-lg font-bold text-neutral-900 dark:text-neutral-100 font-serif leading-tight line-clamp-2">
 									{project.name}
 								</h3>
-								<a
-									href={project.link}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="p-2 text-neutral-500 dark:text-neutral-400 hover:text-warm-600 dark:hover:text-warm-400 transition-colors shrink-0 rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-700"
-									aria-label={`View project ${project.name}`}
-								>
-									<ExternalLink size={20} />
-								</a>
+								<div className="p-1.5 rounded-lg bg-neutral-100 dark:bg-neutral-700 text-neutral-500 dark:text-neutral-400 opacity-0 group-hover:opacity-100 transition-opacity">
+									<MoreHorizontal size={18} />
+								</div>
 							</div>
 
-							<div className="flex flex-wrap gap-2 mb-4">
-								{project.skills.map((skill, i) => (
+							<p className="text-sm text-neutral-600 dark:text-neutral-400 line-clamp-3 mb-4 flex-grow">
+								{project.description}
+							</p>
+
+							<div className="flex flex-wrap gap-1.5 mt-auto">
+								{project.skills.slice(0, 3).map((skill, i) => (
 									<span
 										key={i}
-										className="px-3 py-1.5 rounded-lg text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-700 border border-neutral-200 dark:border-neutral-600 transition-colors hover:bg-neutral-200 dark:hover:bg-neutral-600"
+										className="px-2.5 py-1 rounded-md text-xs font-medium text-neutral-600 dark:text-neutral-400 bg-neutral-100 dark:bg-neutral-700/50 border border-neutral-200 dark:border-neutral-700"
 									>
 										{skill}
 									</span>
 								))}
-							</div>
-
-							<div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-in-out mt-auto">
-								<div className="overflow-hidden">
-									<p className="text-neutral-600 dark:text-neutral-400 leading-relaxed pt-4 border-t border-neutral-200 dark:border-neutral-600">
-										{project.description}
-									</p>
-								</div>
+								{project.skills.length > 3 && (
+									<span className="px-2.5 py-1 rounded-md text-xs font-medium text-neutral-500 dark:text-neutral-500 bg-neutral-50 dark:bg-neutral-800/50 border border-neutral-200 dark:border-neutral-700">
+										+{project.skills.length - 3}
+									</span>
+								)}
 							</div>
 						</div>
 					))}
 				</div>
 			</div>
+
+			{selectedProject && (
+				<ProjectModal
+					project={selectedProject}
+					isOpen={!!selectedProject}
+					onClose={() => setSelectedProject(null)}
+				/>
+			)}
 		</section>
 	);
 }
