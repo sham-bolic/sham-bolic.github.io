@@ -49,6 +49,8 @@ export default function ContactSection() {
 									</div>
 									<a
 										href="https://www.linkedin.com/in/maximillian-fong-8b8577294/"
+										target="_blank"
+										rel="noopener noreferrer"
 										className="text-accent-600 dark:text-accent-400 hover:text-accent-700 dark:hover:text-accent-300 transition-colors font-medium"
 										onClick={() => addKill('LinkedIn Profile', true)}
 									>
@@ -61,6 +63,8 @@ export default function ContactSection() {
 									</div>
 									<a
 										href="https://github.com/sham-bolic"
+										target="_blank"
+										rel="noopener noreferrer"
 										className="text-neutral-600 dark:text-neutral-300 hover:text-neutral-800 dark:hover:text-neutral-100 transition-colors font-medium"
 										onClick={() => addKill('GitHub Profile', true)}
 									>
@@ -73,6 +77,8 @@ export default function ContactSection() {
 									</div>
 									<a
 										href="https://devpost.com/sham-bolic?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav"
+										target="_blank"
+										rel="noopener noreferrer"
 										className="text-warm-600 dark:text-warm-400 hover:text-warm-700 dark:hover:text-warm-300 transition-colors font-medium"
 										onClick={() => addKill('Devpost Profile', true)}
 									>
