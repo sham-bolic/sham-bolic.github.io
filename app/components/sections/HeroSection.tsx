@@ -195,6 +195,13 @@ export default function HeroSection() {
 						View My Work
 					</a>
 					<a
+						href="#resume"
+						className="px-8 py-3 rounded-full font-semibold text-neutral-700 dark:text-neutral-300 border-2 border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-700 hover:border-neutral-400 dark:hover:border-neutral-500"
+						onClick={() => addKill('View Resume')}
+					>
+						Resume
+					</a>
+					<a
 						href="#contact"
 						className="px-8 py-3 rounded-full font-semibold text-neutral-700 dark:text-neutral-300 border-2 border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-700 hover:border-neutral-400 dark:hover:border-neutral-500"
 						onClick={() => addKill('Get In Touch')}

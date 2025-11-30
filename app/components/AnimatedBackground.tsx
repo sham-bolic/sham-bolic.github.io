@@ -14,6 +14,7 @@ export default function AnimatedBackground() {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const particlesRef = useRef<Particle[]>([]);
 	const animationFrameRef = useRef<number | undefined>(undefined);
+	const lastFrameTimeRef = useRef<number>(0);
 
 	useEffect(() => {
 		const canvas = canvasRef.current;
@@ -30,8 +31,8 @@ export default function AnimatedBackground() {
 		resizeCanvas();
 		window.addEventListener('resize', resizeCanvas);
 
-		// Initialize particles
-		const particleCount = 100;
+		// Initialize particles - Reduced count from 100 to 50
+		const particleCount = 50;
 		particlesRef.current = Array.from({ length: particleCount }, () => ({
 			x: Math.random() * canvas.width,
 			y: Math.random() * canvas.height,
@@ -42,7 +43,15 @@ export default function AnimatedBackground() {
 		}));
 
 		// Animation loop
-		const animate = () => {
+		const animate = (timestamp: number) => {
+			// Limit FPS to ~30
+			const elapsed = timestamp - lastFrameTimeRef.current;
+			if (elapsed < 1000 / 30) {
+				animationFrameRef.current = requestAnimationFrame(animate);
+				return;
+			}
+			lastFrameTimeRef.current = timestamp;
+
 			if (!ctx || !canvas) return;
 
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -73,13 +82,14 @@ export default function AnimatedBackground() {
 					const dy = particle.y - otherParticle.y;
 					const distance = Math.sqrt(dx * dx + dy * dy);
 
-					if (distance < 150) {
+					// Increased connection distance slightly (from 150 to 180) to maintain visual density with fewer particles
+					if (distance < 180) {
 						ctx.beginPath();
 						ctx.moveTo(particle.x, particle.y);
 						ctx.lineTo(otherParticle.x, otherParticle.y);
 						ctx.strokeStyle = isDark
-							? `rgba(216, 158, 46, ${0.1 * (1 - distance / 150)})`
-							: `rgba(120, 80, 20, ${0.2 * (1 - distance / 150)})`; // Darker brown in light mode
+							? `rgba(216, 158, 46, ${0.1 * (1 - distance / 180)})`
+							: `rgba(120, 80, 20, ${0.2 * (1 - distance / 180)})`; // Darker brown in light mode
 						ctx.lineWidth = 0.5;
 						ctx.stroke();
 					}
@@ -89,7 +99,7 @@ export default function AnimatedBackground() {
 			animationFrameRef.current = requestAnimationFrame(animate);
 		};
 
-		animate();
+		animationFrameRef.current = requestAnimationFrame(animate);
 
 		// Cleanup
 		return () => {

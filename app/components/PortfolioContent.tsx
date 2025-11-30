@@ -13,6 +13,7 @@ import SkillsSection from './sections/SkillsSection';
 import TimelineSection from './sections/TimelineSection';
 import HobbiesSection from './sections/HobbiesSection';
 import ContactSection from './sections/ContactSection';
+import ResumeSection from './sections/ResumeSection';
 
 export default function PortfolioContent() {
 	// Theme hook
@@ -52,6 +53,7 @@ export default function PortfolioContent() {
 				<ProjectsSection />
 				<SkillsSection />
 				<HobbiesSection />
+				<ResumeSection />
 				<ContactSection />
 			</main>
 

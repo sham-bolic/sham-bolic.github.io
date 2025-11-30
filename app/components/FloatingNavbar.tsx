@@ -25,6 +25,7 @@ export default function FloatingNavbar() {
 		'projects',
 		'skills',
 		'hobbies',
+		'resume',
 		'contact',
 	];
 	const activeSection = useActiveSection(sections);
@@ -36,15 +37,18 @@ export default function FloatingNavbar() {
 		{ id: 'projects', label: 'Projects' },
 		{ id: 'skills', label: 'Skills' },
 		{ id: 'hobbies', label: 'Hobbies' },
+		{ id: 'resume', label: 'Resume' },
 		{ id: 'contact', label: 'Contact' },
 	];
 
 	return (
-		<nav className={`fixed top-5 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ease-in-out ${
-			isMobileMenuOpen 
-				? 'w-[90%] max-w-md rounded-2xl' 
-				: 'w-auto rounded-full'
-		} bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl border border-neutral-200/50 dark:border-neutral-700/50 shadow-lg`}>
+		<nav
+			className={`fixed top-5 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ease-in-out ${
+				isMobileMenuOpen
+					? 'w-[90%] max-w-md rounded-2xl'
+					: 'w-auto rounded-full'
+			} bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl border border-neutral-200/50 dark:border-neutral-700/50 shadow-lg`}
+		>
 			<div className="px-4 py-2 flex justify-between items-center min-h-[3.5rem]">
 				<h1 className="text-lg font-bold font-serif text-neutral-900 dark:text-neutral-100 tracking-tight mr-4 md:mr-8">
 					<a
@@ -58,7 +62,10 @@ export default function FloatingNavbar() {
 
 				{/* Desktop Navigation */}
 				<div className="hidden md:flex items-center gap-1">
-					<ul className="flex items-center gap-1 relative" onMouseLeave={() => setHoveredTab(null)}>
+					<ul
+						className="flex items-center gap-1 relative"
+						onMouseLeave={() => setHoveredTab(null)}
+					>
 						{navItems.map((item) => {
 							const isActive = activeSection === item.id;
 							const isContact = item.id === 'contact';
@@ -96,9 +103,9 @@ export default function FloatingNavbar() {
 												layoutId="active-pill"
 												className="absolute inset-0 bg-neutral-100 dark:bg-neutral-800 rounded-full -z-10"
 												transition={{
-													type: "spring",
+													type: 'spring',
 													stiffness: 380,
-													damping: 30
+													damping: 30,
 												}}
 											/>
 										)}
@@ -142,9 +149,11 @@ export default function FloatingNavbar() {
 			</div>
 
 			{/* Mobile Navigation Dropdown */}
-			<div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-				isMobileMenuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
-			}`}>
+			<div
+				className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+					isMobileMenuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
+				}`}
+			>
 				<ul className="flex flex-col p-4 pt-0 gap-1 border-t border-neutral-200/50 dark:border-neutral-700/50 mt-2">
 					{navItems.map((item) => {
 						const isActive = activeSection === item.id;
