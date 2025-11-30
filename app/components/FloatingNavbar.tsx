@@ -6,6 +6,7 @@ import DarkModeToggle from './DarkModeToggle';
 import { developerName } from '@/app/data/portfolio';
 import { useActiveSection } from '@/app/hooks/useActiveSection';
 import { useKillFeed } from './KillFeed';
+import { motion } from 'framer-motion';
 
 export default function FloatingNavbar() {
 	// Theme hook
@@ -14,6 +15,8 @@ export default function FloatingNavbar() {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	// KillFeed hook
 	const { addKill } = useKillFeed();
+	// Hover state for sliding effect
+	const [hoveredTab, setHoveredTab] = useState<string | null>(null);
 
 	// Active section tracking
 	const sections = [
@@ -55,18 +58,20 @@ export default function FloatingNavbar() {
 
 				{/* Desktop Navigation */}
 				<div className="hidden md:flex items-center gap-1">
-					<ul className="flex items-center gap-1">
+					<ul className="flex items-center gap-1 relative" onMouseLeave={() => setHoveredTab(null)}>
 						{navItems.map((item) => {
 							const isActive = activeSection === item.id;
 							const isContact = item.id === 'contact';
+							const isHovered = hoveredTab === item.id;
 
 							if (isContact) {
 								return (
-									<li key={item.id}>
+									<li key={item.id} className="relative z-10">
 										<a
 											href={`#${item.id}`}
-											className="px-4 py-1.5 text-sm font-medium font-sans text-white bg-gradient-to-r from-warm-500 to-warm-600 hover:from-warm-600 hover:to-warm-700 rounded-full transition-all duration-200 shadow-sm hover:shadow-md ml-2 whitespace-nowrap"
+											className="relative px-4 py-1.5 text-sm font-medium font-sans text-white bg-gradient-to-r from-warm-500 to-warm-600 hover:from-warm-600 hover:to-warm-700 rounded-full transition-all duration-200 shadow-sm hover:shadow-md ml-2 whitespace-nowrap block"
 											onClick={() => addKill(item.label, Math.random() > 0.8)}
+											onMouseEnter={() => setHoveredTab(item.id)}
 										>
 											{item.label}
 										</a>
@@ -75,16 +80,28 @@ export default function FloatingNavbar() {
 							}
 
 							return (
-								<li key={item.id}>
+								<li key={item.id} className="relative z-10">
 									<a
 										href={`#${item.id}`}
-										className={`px-4 py-1.5 text-sm font-medium font-sans rounded-full transition-all duration-200 whitespace-nowrap ${
+										className={`relative px-4 py-1.5 text-sm font-medium font-sans rounded-full transition-colors duration-200 whitespace-nowrap block ${
 											isActive
-												? 'text-neutral-900 dark:text-neutral-100 bg-neutral-100 dark:bg-neutral-800'
-												: 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50'
+												? 'text-neutral-900 dark:text-neutral-100'
+												: 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100'
 										}`}
 										onClick={() => addKill(item.label)}
+										onMouseEnter={() => setHoveredTab(item.id)}
 									>
+										{(isActive || isHovered) && !isContact && (
+											<motion.div
+												layoutId="active-pill"
+												className="absolute inset-0 bg-neutral-100 dark:bg-neutral-800 rounded-full -z-10"
+												transition={{
+													type: "spring",
+													stiffness: 380,
+													damping: 30
+												}}
+											/>
+										)}
 										{item.label}
 									</a>
 								</li>
@@ -174,4 +191,3 @@ export default function FloatingNavbar() {
 		</nav>
 	);
 }
-
