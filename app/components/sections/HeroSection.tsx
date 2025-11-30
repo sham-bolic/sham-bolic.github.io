@@ -77,7 +77,7 @@ export default function HeroSection() {
 		<section
 			id="home"
 			ref={ref}
-			className="min-h-screen flex items-center justify-center pt-28 pb-12 md:py-20 px-4"
+			className="min-h-screen flex items-center justify-center pt-32 pb-12 md:py-20 px-4"
 		>
 			<div className="relative z-10 text-center max-w-4xl mx-auto">
 				{/* Photo - Animated */}
