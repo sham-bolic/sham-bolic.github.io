@@ -54,15 +54,11 @@ export function useContactForm() {
 
 		setStatus('loading');
 		try {
-			const response = await axios.post(
-				'https://webhook.botpress.cloud/4872fe36-89be-42ef-b318-e681a6359560',
-				formData,
-				{
-					headers: {
-						'Content-Type': 'application/json',
-					},
-				}
-			);
+			const response = await axios.post('/api/contact', formData, {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			});
 
 			if (response.status === 200) {
 				setStatus('success');
@@ -86,4 +82,3 @@ export function useContactForm() {
 		handleSubmit,
 	};
 }
-
