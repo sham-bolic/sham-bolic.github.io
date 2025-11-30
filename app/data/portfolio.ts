@@ -1,7 +1,8 @@
 export const developerName = 'Maximillian Fong';
-export const developerTitle = 'Honors Computer Science Major, Statistics Minor';
+export const developerTitle =
+	'B.Sc. Honors Computer Science • Minor in Statistics';
 export const heroTagline =
-	'I am a final-year Computer Science student at McGill University, pursuing an Honors degree with a minor in Statistics. With a strong foundation in full-stack development and machine learning, I specialize in creating scalable applications and extracting insights from data. I am passionate about leveraging technology to solve real-world problems and am eager to contribute to innovative teams in the fields of software development, machine learning, and data science.';
+	'Driven by a passion for Artificial Intelligence, I am a final-year Honors Computer Science student at McGill. I combine a strong statistical foundation with hands-on experience in Deep Learning and NLP, having built poker bots, CNNs, and enterprise AI tools. I aim to leverage advanced ML techniques to solve complex, real-world problems.';
 
 export const projects = [
 	{
@@ -37,7 +38,7 @@ export const projects = [
 		description:
 			'Designed and trained a CNN for handwritten digit recognition, achieving 86%+ accuracy using PyTorch and optimization techniques.',
 		detailedDescription:
-			"A deep learning project focused on computer vision, specifically the classification of handwritten digits. I designed and trained a Convolutional Neural Network (CNN) using PyTorch.\n\nKey features of the implementation include:\n• Custom CNN architecture with multiple convolutional and pooling layers.\n• Batch Normalization to stabilize learning and allow higher learning rates.\n• Data Augmentation techniques (rotation, shifting) to increase dataset diversity and robustness.\n• Optimization via Stochastic Gradient Descent (SGD) with momentum.\n\nThe final model achieved over 86% accuracy on the test set, demonstrating effective handling of overfitting and generalization.",
+			'A deep learning project focused on computer vision, specifically the classification of handwritten digits. I designed and trained a Convolutional Neural Network (CNN) using PyTorch.\n\nKey features of the implementation include:\n• Custom CNN architecture with multiple convolutional and pooling layers.\n• Batch Normalization to stabilize learning and allow higher learning rates.\n• Data Augmentation techniques (rotation, shifting) to increase dataset diversity and robustness.\n• Optimization via Stochastic Gradient Descent (SGD) with momentum.\n\nThe final model achieved over 86% accuracy on the test set, demonstrating effective handling of overfitting and generalization.',
 		skills: ['Python', 'Numpy', 'PyTorch', 'Pandas', 'CNN'],
 		link: 'https://github.com/sham-bolic/number_classification_cnn',
 	},
