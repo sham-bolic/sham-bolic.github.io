@@ -17,9 +17,13 @@ export default function ContactInfo() {
 						<div className="p-2 rounded-lg bg-warm-100 dark:bg-warm-900/30">
 							<Mail className="w-5 h-5 text-warm-600 dark:text-warm-400" />
 						</div>
-						<span className="text-neutral-700 dark:text-neutral-300 font-medium">
+						<a
+							href="mailto:fongcymax@gmail.com"
+							className="text-warm-600 dark:text-warm-400 hover:text-warm-700 dark:hover:text-warm-300 transition-colors font-medium"
+							onClick={() => addKill('Email Opened', true)}
+						>
 							fongcymax@gmail.com
-						</span>
+						</a>
 					</div>
 					<div className="flex items-center justify-center space-x-3">
 						<div className="p-2 rounded-lg bg-accent-100 dark:bg-accent-900/30">

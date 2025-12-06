@@ -8,6 +8,19 @@ import {
 } from '@/app/data/portfolio';
 import { useKillFeed } from '@/app/components/KillFeed';
 
+// Static array moved outside component to prevent recreation on each render
+const headshots = [
+	'/images/headshots/P1000837.webp',
+	'/images/headshots/P1000838.webp',
+	'/images/headshots/P1000839.webp',
+	'/images/headshots/P1000844.webp',
+	'/images/headshots/P1000852.webp',
+	'/images/headshots/P1000857.webp',
+	'/images/headshots/P1000863.webp',
+	'/images/headshots/P1000866.webp',
+	'/images/headshots/P1000868.webp',
+];
+
 export default function HeroSection() {
 	const ref = useRef(null);
 	const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -24,18 +37,6 @@ export default function HeroSection() {
 			addKill('Maximillian Fong', true);
 		}
 	};
-
-	const headshots = [
-		'/images/headshots/P1000837.jpg',
-		'/images/headshots/P1000838.jpg',
-		'/images/headshots/P1000839.jpg',
-		'/images/headshots/P1000844.jpg',
-		'/images/headshots/P1000852.jpg',
-		'/images/headshots/P1000857.jpg',
-		'/images/headshots/P1000863.jpg',
-		'/images/headshots/P1000866.jpg',
-		'/images/headshots/P1000868.jpg',
-	];
 
 	// Trigger animation on mount
 	useEffect(() => {

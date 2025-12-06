@@ -54,11 +54,16 @@ export function useContactForm() {
 
 		setStatus('loading');
 		try {
-			const response = await axios.post('/api/contact', formData, {
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			});
+			// Call Botpress webhook directly (API routes don't work with static export)
+			const response = await axios.post(
+				'https://webhook.botpress.cloud/0bfdf464-60ef-42d3-bfe1-59a9e5c105c0',
+				formData,
+				{
+					headers: {
+						'Content-Type': 'application/json',
+					},
+				}
+			);
 
 			if (response.status === 200) {
 				setStatus('success');

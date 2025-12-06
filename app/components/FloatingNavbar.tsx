@@ -8,6 +8,27 @@ import { useActiveSection } from '@/app/hooks/useActiveSection';
 import { useKillFeed } from './KillFeed';
 import { motion } from 'framer-motion';
 
+// Static arrays moved outside component to prevent recreation on each render
+const sections = [
+	'home',
+	'timeline',
+	'projects',
+	'skills',
+	'hobbies',
+	'resume',
+	'contact',
+];
+
+const navItems = [
+	{ id: 'home', label: 'Home' },
+	{ id: 'timeline', label: 'Timeline' },
+	{ id: 'projects', label: 'Projects' },
+	{ id: 'skills', label: 'Skills' },
+	{ id: 'hobbies', label: 'Hobbies' },
+	{ id: 'resume', label: 'Resume' },
+	{ id: 'contact', label: 'Contact' },
+];
+
 export default function FloatingNavbar() {
 	// Theme hook
 	const { isDark, toggleTheme } = useTheme();
@@ -19,27 +40,7 @@ export default function FloatingNavbar() {
 	const [hoveredTab, setHoveredTab] = useState<string | null>(null);
 
 	// Active section tracking
-	const sections = [
-		'home',
-		'timeline',
-		'projects',
-		'skills',
-		'hobbies',
-		'resume',
-		'contact',
-	];
 	const activeSection = useActiveSection(sections);
-
-	// Navigation Items
-	const navItems = [
-		{ id: 'home', label: 'Home' },
-		{ id: 'timeline', label: 'Timeline' },
-		{ id: 'projects', label: 'Projects' },
-		{ id: 'skills', label: 'Skills' },
-		{ id: 'hobbies', label: 'Hobbies' },
-		{ id: 'resume', label: 'Resume' },
-		{ id: 'contact', label: 'Contact' },
-	];
 
 	return (
 		<nav

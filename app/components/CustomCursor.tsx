@@ -7,8 +7,19 @@ export default function CustomCursor() {
 	const [isVisible, setIsVisible] = useState(false);
 	const mousePos = useRef({ x: 0, y: 0 });
 	const cursorPos = useRef({ x: 0, y: 0 });
+	const animationRef = useRef<number | undefined>(undefined);
+	const isPageVisible = useRef(true);
 
 	useEffect(() => {
+		// Page Visibility API - pause when tab is hidden
+		const handleVisibilityChange = () => {
+			isPageVisible.current = !document.hidden;
+			if (isPageVisible.current && !animationRef.current) {
+				animationRef.current = requestAnimationFrame(animate);
+			}
+		};
+		document.addEventListener('visibilitychange', handleVisibilityChange);
+
 		const updateCursor = (e: MouseEvent) => {
 			mousePos.current = { x: e.clientX, y: e.clientY };
 			setIsVisible(true);
@@ -27,8 +38,14 @@ export default function CustomCursor() {
 		window.addEventListener('mouseleave', hideCursor);
 		document.addEventListener('mouseenter', () => setIsVisible(true));
 
-		// Smooth animation loop
+		// Smooth animation loop - runs continuously but pauses when tab hidden
 		const animate = () => {
+			// Stop if page hidden
+			if (!isPageVisible.current) {
+				animationRef.current = undefined;
+				return;
+			}
+
 			// Faster lerp for gaming feel
 			cursorPos.current.x += (mousePos.current.x - cursorPos.current.x) * 0.4;
 			cursorPos.current.y += (mousePos.current.y - cursorPos.current.y) * 0.4;
@@ -37,14 +54,18 @@ export default function CustomCursor() {
 				cursorRef.current.style.transform = `translate(${cursorPos.current.x}px, ${cursorPos.current.y}px) translate(-50%, -50%)`;
 			}
 
-			requestAnimationFrame(animate);
+			animationRef.current = requestAnimationFrame(animate);
 		};
 
-		animate();
+		animationRef.current = requestAnimationFrame(animate);
 
 		return () => {
 			window.removeEventListener('mousemove', updateCursor);
 			window.removeEventListener('mouseleave', hideCursor);
+			document.removeEventListener('visibilitychange', handleVisibilityChange);
+			if (animationRef.current) {
+				cancelAnimationFrame(animationRef.current);
+			}
 		};
 	}, []);
 
@@ -90,6 +111,8 @@ export default function CustomCursor() {
 	);
 }
 
+const TRAIL_COUNT = 2;
+
 function TrailingParticles({
 	mousePos,
 	isVisible,
@@ -99,18 +122,34 @@ function TrailingParticles({
 }) {
 	const particlesRef = useRef<HTMLDivElement[]>([]);
 	const trailPositions = useRef<Array<{ x: number; y: number }>>([]);
+	const animationRef = useRef<number | undefined>(undefined);
+	const isPageVisible = useRef(true);
 
 	useEffect(() => {
 		if (!isVisible) return;
 
+		// Page Visibility API
+		const handleVisibilityChange = () => {
+			isPageVisible.current = !document.hidden;
+			if (isPageVisible.current && !animationRef.current) {
+				animationRef.current = requestAnimationFrame(animate);
+			}
+		};
+		document.addEventListener('visibilitychange', handleVisibilityChange);
+
 		// Initialize trail positions
-		for (let i = 0; i < 5; i++) {
+		for (let i = 0; i < TRAIL_COUNT; i++) {
 			if (!trailPositions.current[i]) {
 				trailPositions.current[i] = { x: 0, y: 0 };
 			}
 		}
 
 		const animate = () => {
+			if (!isPageVisible.current) {
+				animationRef.current = undefined;
+				return;
+			}
+
 			// Update first particle to follow mouse with delay
 			const delay = 0.15;
 			trailPositions.current[0] = {
@@ -123,7 +162,7 @@ function TrailingParticles({
 			};
 
 			// Each particle follows the previous one
-			for (let i = 1; i < 5; i++) {
+			for (let i = 1; i < TRAIL_COUNT; i++) {
 				trailPositions.current[i] = {
 					x:
 						trailPositions.current[i].x +
@@ -142,24 +181,27 @@ function TrailingParticles({
 					const pos = trailPositions.current[index];
 					particle.style.transform = `translate(${pos.x}px, ${
 						pos.y
-					}px) translate(-50%, -50%) scale(${1 - index / 5})`;
-					particle.style.opacity = `${(1 - index / 5) * 0.3}`;
+					}px) translate(-50%, -50%) scale(${1 - index / TRAIL_COUNT})`;
+					particle.style.opacity = `${(1 - index / TRAIL_COUNT) * 0.3}`;
 				}
 			});
 
-			requestAnimationFrame(animate);
+			animationRef.current = requestAnimationFrame(animate);
 		};
 
-		const animationId = requestAnimationFrame(animate);
+		animationRef.current = requestAnimationFrame(animate);
 
 		return () => {
-			cancelAnimationFrame(animationId);
+			document.removeEventListener('visibilitychange', handleVisibilityChange);
+			if (animationRef.current) {
+				cancelAnimationFrame(animationRef.current);
+			}
 		};
 	}, [isVisible, mousePos]);
 
 	return (
 		<>
-			{Array.from({ length: 5 }).map((_, index) => (
+			{Array.from({ length: TRAIL_COUNT }).map((_, index) => (
 				<div
 					key={index}
 					ref={(el) => {

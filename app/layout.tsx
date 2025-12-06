@@ -19,8 +19,8 @@ export default function RootLayout({
 	return (
 		<html lang="en" className={inter.variable}>
 			<body className="font-serif">
-				{/* Botpress Scripts - moved from page.tsx */}
-				<script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
+				{/* Botpress Scripts - async/defer for better loading performance */}
+				<script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" async></script>
 				<script
 					src="https://files.bpcontent.cloud/2025/09/09/03/20250909033652-E1XCLYUC.js"
 					defer

@@ -198,41 +198,41 @@ export const hobbies = [
 		name: 'Volleyball',
 		description:
 			'This is one of my more recent hobbies that I have been getting really into. From going to open gym many times a week to partaking in multiple intramural teams during the semester, I am always looking to play some volleyball.',
-		image: '/images/hobbies/vball.jpg',
+		image: '/images/hobbies/vball.webp',
 	},
 	{
 		id: 2,
 		name: 'Cycling',
 		description:
 			'My favorite summertime activity is going for a ride with friends, whether it be a short ride around Circuit Gilles Villeneuve or a longer trip to Niagara Falls. Cycling gives me a sense of freedom that no other sport does.',
-		image: '/images/hobbies/cycling.jpg',
+		image: '/images/hobbies/cycling.webp',
 	},
 	{
 		id: 3,
 		name: 'Climbing',
 		description:
 			'The aspect that draws me to bouldering is the constant battle against myself. Each boulder is like a problem that I have to solve, which stimulates my mind as much as it does my body.',
-		image: '/images/hobbies/climbing.jpg',
+		image: '/images/hobbies/climbing.webp',
 	},
 	{
 		id: 4,
 		name: 'Snowboarding',
 		description:
 			'Going fast, quick maneuvers, snowboarding is my favorite winter activity. I love the feeling of adrenaline, the feeling of just reacting to the mountain and the snow. It is a great way to spend time with friends and family.',
-		image: '/images/hobbies/snowboarding.jpg',
+		image: '/images/hobbies/snowboarding.webp',
 	},
 	{
 		id: 5,
 		name: 'Travelling',
 		description:
 			'Seeing new landscapes, experiencing different cultures, and most of all trying new foods. Travelling has really opened my eyes to different lifestyles around the world, making me appreciate more what I have and what I can do.',
-		image: '/images/hobbies/travelling.jpg',
+		image: '/images/hobbies/travelling.webp',
 	},
 	{
 		id: 6,
 		name: 'Gaming',
 		description:
 			'This is my way of spending time with friends and my way of relaxing. Most games I play are competitive, and I love the feeling of improving and climbing the ranks.',
-		image: '/images/hobbies/gaming.jpg',
+		image: '/images/hobbies/gaming.webp',
 	},
 ];
