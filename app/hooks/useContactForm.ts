@@ -55,24 +55,25 @@ export function useContactForm() {
 		setStatus('loading');
 		try {
 			// Call Botpress webhook directly (API routes don't work with static export)
-			const response = await axios.post(
+			// Use fetch with no-cors to bypass CORS (can't read response, but request goes through)
+			await fetch(
 				'https://webhook.botpress.cloud/0bfdf464-60ef-42d3-bfe1-59a9e5c105c0',
-				formData,
 				{
+					method: 'POST',
+					mode: 'no-cors',
 					headers: {
-						'Content-Type': 'application/json',
+						'Content-Type': 'text/plain',
 					},
+					body: JSON.stringify(formData),
 				}
 			);
 
-			if (response.status === 200) {
-				setStatus('success');
-				setFormData({ email: '', subject: '', body: '' });
-				setErrors({});
-				addKill('Message Sent', true);
-			} else {
-				setStatus('error');
-			}
+			// With no-cors mode, response is opaque - we can't check status
+			// Assume success if no error was thrown
+			setStatus('success');
+			setFormData({ email: '', subject: '', body: '' });
+			setErrors({});
+			addKill('Message Sent', true);
 		} catch (error) {
 			console.error('Error sending message:', error);
 			setStatus('error');
