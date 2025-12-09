@@ -46,9 +46,9 @@ export default function CustomCursor() {
 				return;
 			}
 
-			// Faster lerp for gaming feel
-			cursorPos.current.x += (mousePos.current.x - cursorPos.current.x) * 0.4;
-			cursorPos.current.y += (mousePos.current.y - cursorPos.current.y) * 0.4;
+			// Slightly slower lerp to reduce work
+			cursorPos.current.x += (mousePos.current.x - cursorPos.current.x) * 0.25;
+			cursorPos.current.y += (mousePos.current.y - cursorPos.current.y) * 0.25;
 
 			if (cursorRef.current) {
 				cursorRef.current.style.transform = `translate(${cursorPos.current.x}px, ${cursorPos.current.y}px) translate(-50%, -50%)`;
@@ -104,118 +104,6 @@ export default function CustomCursor() {
 					}`}
 				/>
 			</div>
-
-			{/* Trailing particles - updated to match green theme but very subtle */}
-			<TrailingParticles mousePos={mousePos} isVisible={isVisible} />
-		</>
-	);
-}
-
-const TRAIL_COUNT = 2;
-
-function TrailingParticles({
-	mousePos,
-	isVisible,
-}: {
-	mousePos: React.MutableRefObject<{ x: number; y: number }>;
-	isVisible: boolean;
-}) {
-	const particlesRef = useRef<HTMLDivElement[]>([]);
-	const trailPositions = useRef<Array<{ x: number; y: number }>>([]);
-	const animationRef = useRef<number | undefined>(undefined);
-	const isPageVisible = useRef(true);
-
-	useEffect(() => {
-		if (!isVisible) return;
-
-		// Page Visibility API
-		const handleVisibilityChange = () => {
-			isPageVisible.current = !document.hidden;
-			if (isPageVisible.current && !animationRef.current) {
-				animationRef.current = requestAnimationFrame(animate);
-			}
-		};
-		document.addEventListener('visibilitychange', handleVisibilityChange);
-
-		// Initialize trail positions
-		for (let i = 0; i < TRAIL_COUNT; i++) {
-			if (!trailPositions.current[i]) {
-				trailPositions.current[i] = { x: 0, y: 0 };
-			}
-		}
-
-		const animate = () => {
-			if (!isPageVisible.current) {
-				animationRef.current = undefined;
-				return;
-			}
-
-			// Update first particle to follow mouse with delay
-			const delay = 0.15;
-			trailPositions.current[0] = {
-				x:
-					trailPositions.current[0].x +
-					(mousePos.current.x - trailPositions.current[0].x) * delay,
-				y:
-					trailPositions.current[0].y +
-					(mousePos.current.y - trailPositions.current[0].y) * delay,
-			};
-
-			// Each particle follows the previous one
-			for (let i = 1; i < TRAIL_COUNT; i++) {
-				trailPositions.current[i] = {
-					x:
-						trailPositions.current[i].x +
-						(trailPositions.current[i - 1].x - trailPositions.current[i].x) *
-							delay,
-					y:
-						trailPositions.current[i].y +
-						(trailPositions.current[i - 1].y - trailPositions.current[i].y) *
-							delay,
-				};
-			}
-
-			// Update DOM elements
-			particlesRef.current.forEach((particle, index) => {
-				if (particle && trailPositions.current[index]) {
-					const pos = trailPositions.current[index];
-					particle.style.transform = `translate(${pos.x}px, ${
-						pos.y
-					}px) translate(-50%, -50%) scale(${1 - index / TRAIL_COUNT})`;
-					particle.style.opacity = `${(1 - index / TRAIL_COUNT) * 0.3}`;
-				}
-			});
-
-			animationRef.current = requestAnimationFrame(animate);
-		};
-
-		animationRef.current = requestAnimationFrame(animate);
-
-		return () => {
-			document.removeEventListener('visibilitychange', handleVisibilityChange);
-			if (animationRef.current) {
-				cancelAnimationFrame(animationRef.current);
-			}
-		};
-	}, [isVisible, mousePos]);
-
-	return (
-		<>
-			{Array.from({ length: TRAIL_COUNT }).map((_, index) => (
-				<div
-					key={index}
-					ref={(el) => {
-						if (el) particlesRef.current[index] = el;
-					}}
-					className="fixed pointer-events-none z-[9997] will-change-transform"
-					style={{
-						opacity: isVisible ? 0.3 : 0,
-						transition: 'opacity 0.3s ease',
-					}}
-				>
-					<div className="w-1 h-1 rounded-full bg-[#00FF00]" />
-				</div>
-			))}
 		</>
 	);
 }
