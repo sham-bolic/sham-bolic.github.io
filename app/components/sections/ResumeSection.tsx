@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import { Download, ExternalLink } from 'lucide-react';
 import useOnScreen from '@/app/hooks/useOnScreen';
 import { useKillFeed } from '@/app/components/KillFeed';
@@ -11,12 +11,12 @@ export default function ResumeSection() {
 	const [shouldLoadPdf, setShouldLoadPdf] = useState(false);
 
 	const resumeUrl = '/files/CV_Maximillian_Fong.pdf';
-
-	useEffect(() => {
-		if (isVisible && !shouldLoadPdf) {
+	const handleLoadClick = () => {
+		if (!shouldLoadPdf) {
 			setShouldLoadPdf(true);
+			addKill('Loaded Resume Preview', true);
 		}
-	}, [isVisible, shouldLoadPdf]);
+	};
 
 	return (
 		<section
@@ -61,8 +61,8 @@ export default function ResumeSection() {
 						</a>
 					</div>
 
-					{/* PDF Preview Container */}
-					<div className="w-full aspect-[8.5/11] w-full max-w-4xl rounded-xl overflow-hidden shadow-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 relative">
+					{/* PDF Preview Container - click to load */}
+					<div className="w-full aspect-[8.5/11] max-w-4xl rounded-xl overflow-hidden shadow-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 relative">
 						{shouldLoadPdf ? (
 							<iframe
 								src={`${resumeUrl}#toolbar=0&navpanes=0&scrollbar=0`}
@@ -71,9 +71,15 @@ export default function ResumeSection() {
 								loading="lazy"
 							/>
 						) : (
-							<div className="absolute inset-0 flex items-center justify-center bg-neutral-100 dark:bg-neutral-900">
-								<div className="w-12 h-12 border-4 border-warm-500 border-t-transparent rounded-full animate-spin"></div>
-							</div>
+							<button
+								type="button"
+								className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-neutral-100/90 dark:bg-neutral-900/90 text-neutral-800 dark:text-neutral-100"
+								onClick={handleLoadClick}
+							>
+								<span className="px-4 py-2 rounded-full bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 font-semibold shadow-sm hover:shadow transition">
+									Load Resume Preview
+								</span>
+							</button>
 						)}
 					</div>
 				</div>
