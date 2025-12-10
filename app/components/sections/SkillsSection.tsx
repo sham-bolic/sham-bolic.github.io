@@ -3,10 +3,16 @@ import React, { useRef } from 'react';
 import useOnScreen from '@/app/hooks/useOnScreen';
 import { skills } from '@/app/data/portfolio';
 import { Code2, Layout, Brain, Terminal } from 'lucide-react';
+import { useKillFeed } from '@/app/components/KillFeed';
 
 export default function SkillsSection() {
 	const ref = useRef<HTMLElement>(null);
 	const isVisible = useOnScreen(ref, 0.1);
+	const { addKill } = useKillFeed();
+
+	const handleSkillClick = (skill: string) => {
+		addKill(`Learned ${skill}`, true);
+	};
 
 	const getIcon = (category: string) => {
 		if (category.includes('Programming'))
@@ -56,12 +62,13 @@ export default function SkillsSection() {
 							{/* Skills List */}
 							<div className="flex flex-wrap gap-2.5">
 								{skillGroup.list.map((skill, skillIndex) => (
-									<span
+									<button
 										key={skillIndex}
-										className="px-3.5 py-1.5 rounded-lg text-sm font-medium text-neutral-600 dark:text-neutral-400 bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200/60 dark:border-neutral-700/60 transition-all duration-300 hover:bg-white dark:hover:bg-neutral-800 hover:border-warm-300 dark:hover:border-warm-700 hover:text-warm-600 dark:hover:text-warm-400 hover:shadow-sm hover:-translate-y-0.5"
+										onClick={() => handleSkillClick(skill)}
+										className="px-3.5 py-1.5 rounded-lg text-sm font-medium text-neutral-600 dark:text-neutral-400 bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200/60 dark:border-neutral-700/60 transition-all duration-300 hover:bg-white dark:hover:bg-neutral-800 hover:border-warm-300 dark:hover:border-warm-700 hover:text-warm-600 dark:hover:text-warm-400 hover:shadow-sm hover:-translate-y-0.5 cursor-pointer"
 									>
 										{skill}
-									</span>
+									</button>
 								))}
 							</div>
 						</div>
