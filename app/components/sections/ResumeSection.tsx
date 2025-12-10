@@ -22,7 +22,7 @@ export default function ResumeSection() {
 		<section
 			id="resume"
 			ref={ref}
-			className="py-20 bg-white dark:bg-neutral-950"
+			className="py-20"
 		>
 			<div className="container mx-auto px-4 max-w-5xl">
 				<h2

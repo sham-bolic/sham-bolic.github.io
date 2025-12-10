@@ -80,7 +80,7 @@ export default function TimelineSection() {
 		<section
 			id="timeline"
 			ref={ref}
-			className="py-12 md:py-20 bg-neutral-50 dark:bg-neutral-900/50"
+			className="py-12 md:py-20"
 		>
 			<div className="container mx-auto px-4 max-w-6xl">
 				<h2

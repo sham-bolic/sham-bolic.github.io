@@ -22,7 +22,7 @@ export default function SkillsSection() {
 		<section
 			id="skills"
 			ref={ref}
-			className="py-20 bg-neutral-50 dark:bg-neutral-900/50"
+			className="py-20"
 		>
 			<div className="container mx-auto px-4 max-w-7xl">
 				<h2
