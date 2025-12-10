@@ -88,127 +88,141 @@ export default function HeroSection() {
 			ref={ref}
 			className="min-h-screen flex items-center justify-center pt-32 pb-12 md:py-20 px-4"
 		>
-			<div className="relative z-10 text-center max-w-4xl mx-auto">
-				{/* Photo - Animated */}
-				<div
-					className={`mb-12 transition-all duration-1000 ${
-						mounted
-							? 'opacity-100 translate-y-0 scale-100'
-							: 'opacity-0 -translate-y-10 scale-95'
-					}`}
-					style={{ transitionDelay: '0ms' }}
-				>
+			<div className="container mx-auto max-w-7xl">
+				<div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-20">
+					{/* Text Content */}
+					<div className="flex-1 text-center lg:text-left z-10">
+						{/* Name - Animated with typing effect */}
+						<h1
+							className={`text-4xl md:text-6xl lg:text-7xl font-bold font-serif mb-4 text-neutral-900 dark:text-neutral-100 tracking-tight transition-all duration-1000 ${
+								mounted
+									? 'opacity-100 translate-y-0'
+									: 'opacity-0 translate-y-10'
+							}`}
+							style={{ transitionDelay: '200ms' }}
+						>
+							{displayedName}
+							{!isTypingComplete && (
+								<span className="inline-block w-1 h-[0.9em] ml-1 bg-warm-500 animate-blink align-middle" />
+							)}
+						</h1>
+						{/* Title - Animated with more delay */}
+						<p
+							className={`text-xl md:text-2xl text-neutral-600 dark:text-neutral-300 mb-6 font-medium transition-all duration-1000 ${
+								mounted
+									? 'opacity-100 translate-y-0'
+									: 'opacity-0 translate-y-10'
+							}`}
+							style={{ transitionDelay: '300ms' }}
+						>
+							{developerTitle}
+						</p>
+						{/* Bio - Animated with even more delay */}
+						<p
+							className={`text-lg text-neutral-700 dark:text-neutral-400 max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed transition-all duration-1000 ${
+								mounted
+									? 'opacity-100 translate-y-0'
+									: 'opacity-0 translate-y-10'
+							}`}
+							style={{ transitionDelay: '500ms' }}
+						>
+							{heroTagline}
+						</p>
+						{/* Buttons - Animated last */}
+						<div
+							className={`flex justify-center lg:justify-start flex-wrap gap-4 transition-all duration-1000 ${
+								mounted
+									? 'opacity-100 translate-y-0'
+									: 'opacity-0 translate-y-10'
+							}`}
+							style={{ transitionDelay: '700ms' }}
+						>
+							<a
+								href="#projects"
+								className="px-8 py-3 rounded-full font-semibold text-white bg-gradient-to-r from-warm-500 to-warm-600 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+								onClick={() => addKill('View My Work')}
+							>
+								View My Work
+							</a>
+							<a
+								href="#resume"
+								className="px-8 py-3 rounded-full font-semibold text-neutral-700 dark:text-neutral-300 border-2 border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-700 hover:border-neutral-400 dark:hover:border-neutral-500"
+								onClick={() => addKill('View Resume')}
+							>
+								Resume
+							</a>
+							<a
+								href="#contact"
+								className="px-8 py-3 rounded-full font-semibold text-neutral-700 dark:text-neutral-300 border-2 border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-700 hover:border-neutral-400 dark:hover:border-neutral-500"
+								onClick={() => addKill('Get In Touch')}
+							>
+								Get In Touch
+							</a>
+						</div>
+					</div>
+
+					{/* Photo - Animated */}
 					<div
-						className="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto cursor-pointer group perspective-1000"
-						onClick={handleKill}
+						className={`flex-1 flex justify-center lg:justify-end transition-all duration-1000 ${
+							mounted
+								? 'opacity-100 translate-y-0 scale-100'
+								: 'opacity-0 -translate-y-10 scale-95'
+						}`}
+						style={{ transitionDelay: '0ms' }}
 					>
 						<div
-							className={`relative w-full h-full transition-transform duration-700 preserve-3d ${
-								isDead ? 'rotate-y-180' : ''
-							}`}
+							className="relative w-72 h-72 md:w-80 md:h-80 lg:w-[500px] lg:h-[500px] cursor-pointer group perspective-1000"
+							onClick={handleKill}
 						>
-							{/* Front Face (Photos) */}
-							<div className="absolute inset-0 backface-hidden">
-								<div className="relative w-full h-full">
-									{/* Current image */}
-									<div
-										className="absolute inset-0 rounded-3xl shadow-2xl border-4 border-white dark:border-neutral-700 overflow-hidden transition-opacity duration-500"
-										style={{ opacity: 1 }}
-									>
-										<Image
-											src={headshots[currentImageIndex]}
-											alt="Maximillian Fong's profile photo"
-											fill
-											className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-											priority
-										/>
-									</div>
-									{/* Next image (fading in) */}
-									<div
-										className="absolute inset-0 rounded-3xl shadow-2xl border-4 border-white dark:border-neutral-700 overflow-hidden transition-opacity duration-500"
-										style={{
-											opacity: nextImageIndex === currentImageIndex ? 0 : 1,
-										}}
-									>
-										<Image
-											src={headshots[nextImageIndex]}
-											alt="Maximillian Fong's profile photo"
-											fill
-											className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-										/>
+							<div
+								className={`relative w-full h-full transition-transform duration-700 preserve-3d ${
+									isDead ? 'rotate-y-180' : ''
+								}`}
+							>
+								{/* Front Face (Photos) */}
+								<div className="absolute inset-0 backface-hidden">
+									<div className="relative w-full h-full">
+										{/* Current image */}
+										<div
+											className="absolute inset-0 rounded-[2rem] lg:rounded-[3rem] shadow-2xl border-4 border-white dark:border-neutral-700 overflow-hidden transition-opacity duration-500"
+											style={{ opacity: 1 }}
+										>
+											<Image
+												src={headshots[currentImageIndex]}
+												alt="Maximillian Fong's profile photo"
+												fill
+												className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+												priority
+											/>
+										</div>
+										{/* Next image (fading in) */}
+										<div
+											className="absolute inset-0 rounded-[2rem] lg:rounded-[3rem] shadow-2xl border-4 border-white dark:border-neutral-700 overflow-hidden transition-opacity duration-500"
+											style={{
+												opacity: nextImageIndex === currentImageIndex ? 0 : 1,
+											}}
+										>
+											<Image
+												src={headshots[nextImageIndex]}
+												alt="Maximillian Fong's profile photo"
+												fill
+												className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+											/>
+										</div>
 									</div>
 								</div>
-							</div>
 
-							{/* Back Face (Dead State) */}
-							<div className="absolute inset-0 backface-hidden rotate-y-180">
-								<div className="w-full h-full rounded-3xl shadow-2xl border-4 flex items-center justify-center overflow-hidden">
-									<span className="text-[150px] md:text-[180px] select-none animate-pulse leading-none">
-										😵
-									</span>
+								{/* Back Face (Dead State) */}
+								<div className="absolute inset-0 backface-hidden rotate-y-180">
+									<div className="w-full h-full rounded-[2rem] lg:rounded-[3rem] shadow-2xl border-4 flex items-center justify-center overflow-hidden bg-neutral-100 dark:bg-neutral-800">
+										<span className="text-[150px] md:text-[180px] lg:text-[250px] select-none animate-pulse leading-none">
+											😵
+										</span>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				{/* Name - Animated with typing effect */}
-				<h1
-					className={`text-4xl md:text-6xl lg:text-7xl font-bold font-serif mb-4 text-neutral-900 dark:text-neutral-100 tracking-tight transition-all duration-1000 ${
-						mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-					}`}
-					style={{ transitionDelay: '200ms' }}
-				>
-					{displayedName}
-					{!isTypingComplete && (
-						<span className="inline-block w-1 h-[0.9em] ml-1 bg-warm-500 animate-blink align-middle" />
-					)}
-				</h1>
-				{/* Title - Animated with more delay */}
-				<p
-					className={`text-xl md:text-2xl text-neutral-600 dark:text-neutral-300 mb-6 font-medium transition-all duration-1000 ${
-						mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-					}`}
-					style={{ transitionDelay: '300ms' }}
-				>
-					{developerTitle}
-				</p>
-				{/* Bio - Animated with even more delay */}
-				<p
-					className={`text-lg text-neutral-700 dark:text-neutral-400 max-w-2xl mx-auto mb-8 leading-relaxed transition-all duration-1000 ${
-						mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-					}`}
-					style={{ transitionDelay: '500ms' }}
-				>
-					{heroTagline}
-				</p>
-				{/* Buttons - Animated last */}
-				<div
-					className={`flex justify-center flex-wrap gap-4 transition-all duration-1000 ${
-						mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-					}`}
-					style={{ transitionDelay: '700ms' }}
-				>
-					<a
-						href="#projects"
-						className="px-8 py-3 rounded-full font-semibold text-white bg-gradient-to-r from-warm-500 to-warm-600 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
-						onClick={() => addKill('View My Work')}
-					>
-						View My Work
-					</a>
-					<a
-						href="#resume"
-						className="px-8 py-3 rounded-full font-semibold text-neutral-700 dark:text-neutral-300 border-2 border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-700 hover:border-neutral-400 dark:hover:border-neutral-500"
-						onClick={() => addKill('View Resume')}
-					>
-						Resume
-					</a>
-					<a
-						href="#contact"
-						className="px-8 py-3 rounded-full font-semibold text-neutral-700 dark:text-neutral-300 border-2 border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-700 hover:border-neutral-400 dark:hover:border-neutral-500"
-						onClick={() => addKill('Get In Touch')}
-					>
-						Get In Touch
-					</a>
 				</div>
 			</div>
 		</section>
