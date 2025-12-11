@@ -89,14 +89,11 @@ export default function HeroSection() {
 			className="min-h-screen flex items-center justify-center pt-32 pb-12 md:py-20 px-4"
 		>
 			<div className="container mx-auto max-w-7xl">
-				<div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-20">
+				<div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-16">
 					{/* Text Content */}
-					<div className="flex-1 text-center lg:text-left z-10">
+					<div className="flex-1 lg:flex-[1.3] text-center lg:text-left z-10">
 						{/* Name - Animated with typing effect */}
-						<h1
-							className="text-4xl md:text-6xl lg:text-7xl font-bold font-serif mb-8 text-neutral-900 dark:text-neutral-100 tracking-tight animate-fade-in-up"
-							style={{ animationDelay: '200ms' }}
-						>
+						<h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-serif mb-8 text-neutral-900 dark:text-neutral-100 tracking-tight">
 							{displayedName}
 							{!isTypingComplete && (
 								<span className="inline-block w-1 h-[0.9em] ml-1 bg-warm-500 animate-blink align-middle" />
