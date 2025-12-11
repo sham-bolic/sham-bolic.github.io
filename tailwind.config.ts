@@ -90,6 +90,10 @@ export default {
         border: '#E7E5E4',
       },
       keyframes: {
+        'fade-in-up': {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
         blink: {
           '0%, 100%': { visibility: 'visible' },
           '50%': { visibility: 'hidden' },
@@ -105,6 +109,7 @@ export default {
         },
       },
       animation: {
+        'fade-in-up': 'fade-in-up 1s ease-out forwards',
         blink: "blink 1s steps(1, start) infinite",
         float: 'float 6s ease-in-out infinite',
         'float-slow': 'float-slow 20s ease-in-out infinite',

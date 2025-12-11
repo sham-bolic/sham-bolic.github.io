@@ -94,12 +94,8 @@ export default function HeroSection() {
 					<div className="flex-1 text-center lg:text-left z-10">
 						{/* Name - Animated with typing effect */}
 						<h1
-							className={`text-4xl md:text-6xl lg:text-7xl font-bold font-serif mb-4 text-neutral-900 dark:text-neutral-100 tracking-tight transition-all duration-1000 ${
-								mounted
-									? 'opacity-100 translate-y-0'
-									: 'opacity-0 translate-y-10'
-							}`}
-							style={{ transitionDelay: '200ms' }}
+							className="text-4xl md:text-6xl lg:text-7xl font-bold font-serif mb-8 text-neutral-900 dark:text-neutral-100 tracking-tight animate-fade-in-up"
+							style={{ animationDelay: '200ms' }}
 						>
 							{displayedName}
 							{!isTypingComplete && (
@@ -108,34 +104,22 @@ export default function HeroSection() {
 						</h1>
 						{/* Title - Animated with more delay */}
 						<p
-							className={`text-xl md:text-2xl text-neutral-600 dark:text-neutral-300 mb-6 font-medium transition-all duration-1000 ${
-								mounted
-									? 'opacity-100 translate-y-0'
-									: 'opacity-0 translate-y-10'
-							}`}
-							style={{ transitionDelay: '300ms' }}
+							className="text-xl md:text-2xl text-neutral-600 dark:text-neutral-300 mb-6 font-medium animate-fade-in-up"
+							style={{ animationDelay: '300ms' }}
 						>
 							{developerTitle}
 						</p>
 						{/* Bio - Animated with even more delay */}
 						<p
-							className={`text-lg text-neutral-700 dark:text-neutral-400 max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed transition-all duration-1000 ${
-								mounted
-									? 'opacity-100 translate-y-0'
-									: 'opacity-0 translate-y-10'
-							}`}
-							style={{ transitionDelay: '500ms' }}
+							className="text-lg text-neutral-700 dark:text-neutral-400 max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed animate-fade-in-up"
+							style={{ animationDelay: '500ms' }}
 						>
 							{heroTagline}
 						</p>
 						{/* Buttons - Animated last */}
 						<div
-							className={`flex justify-center lg:justify-start flex-wrap gap-4 transition-all duration-1000 ${
-								mounted
-									? 'opacity-100 translate-y-0'
-									: 'opacity-0 translate-y-10'
-							}`}
-							style={{ transitionDelay: '700ms' }}
+							className="flex justify-center lg:justify-start flex-wrap gap-4 animate-fade-in-up"
+							style={{ animationDelay: '700ms' }}
 						>
 							<a
 								href="#projects"
@@ -163,12 +147,8 @@ export default function HeroSection() {
 
 					{/* Photo - Animated */}
 					<div
-						className={`flex-1 flex justify-center lg:justify-end transition-all duration-1000 ${
-							mounted
-								? 'opacity-100 translate-y-0 scale-100'
-								: 'opacity-0 -translate-y-10 scale-95'
-						}`}
-						style={{ transitionDelay: '0ms' }}
+						className="flex-1 flex justify-center lg:justify-end animate-fade-in-up"
+						style={{ animationDelay: '0ms' }}
 					>
 						<div
 							className="relative w-72 h-72 md:w-80 md:h-80 lg:w-[500px] lg:h-[500px] cursor-pointer group perspective-1000"
