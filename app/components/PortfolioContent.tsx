@@ -4,16 +4,19 @@ import { ChevronUp } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 import { developerName } from '@/app/data/portfolio';
 import { useKillFeed } from './KillFeed';
+import dynamic from 'next/dynamic';
 import FloatingNavbar from './FloatingNavbar';
 
 // Import section components
 import HeroSection from './sections/HeroSection';
-import ProjectsSection from './sections/ProjectsSection';
-import SkillsSection from './sections/SkillsSection';
-import TimelineSection from './sections/TimelineSection';
-import HobbiesSection from './sections/HobbiesSection';
-import ContactSection from './sections/ContactSection';
-import ResumeSection from './sections/ResumeSection';
+
+// Dynamically import heavy below-the-fold sections
+const ProjectsSection = dynamic(() => import('./sections/ProjectsSection'));
+const SkillsSection = dynamic(() => import('./sections/SkillsSection'));
+const TimelineSection = dynamic(() => import('./sections/TimelineSection'));
+const HobbiesSection = dynamic(() => import('./sections/HobbiesSection'));
+const ContactSection = dynamic(() => import('./sections/ContactSection'));
+const ResumeSection = dynamic(() => import('./sections/ResumeSection'));
 
 export default function PortfolioContent() {
 	// Theme hook
