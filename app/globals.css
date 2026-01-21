@@ -48,6 +48,37 @@
 		font-family: 'Georgia', serif;
 	}
 
+	/* Use an expanded crosshair on interactive elements */
+	a,
+	button,
+	[role='button'],
+	.cursor-pointer {
+		cursor: url('/cursor-crosshair-pointer.svg') 16 16,
+			url('/cursor-crosshair.svg') 16 16,
+			pointer !important;
+	}
+
+	/* Botpress widget - apply expanded crosshair */
+	#botpress-webchat,
+	[id*='botpress'],
+	[class*='bp-widget'],
+	[class*='bp-webchat'],
+	[class*='botpress'] {
+		cursor: url('/cursor-crosshair-pointer.svg') 16 16,
+			url('/cursor-crosshair.svg') 16 16,
+			pointer !important;
+	}
+
+	#botpress-webchat *,
+	[id*='botpress'] *,
+	[class*='bp-widget'] *,
+	[class*='bp-webchat'] *,
+	[class*='botpress'] * {
+		cursor: url('/cursor-crosshair-pointer.svg') 16 16,
+			url('/cursor-crosshair.svg') 16 16,
+			pointer !important;
+	}
+
 	/* Modern typography */
 	h1,
 	h2,
@@ -219,5 +250,12 @@
 
 	.rotate-y-180 {
 		transform: rotateY(180deg);
+	}
+
+	/* Override Tailwind cursor-pointer with expanded crosshair */
+	.cursor-pointer {
+		cursor: url('/cursor-crosshair-pointer.svg') 20 20,
+			url('/cursor-crosshair.svg') 16 16,
+			pointer !important;
 	}
 }
