@@ -8,8 +8,35 @@ import ClientLayout from './components/ClientLayout';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-	title: 'Website Portfolio',
-	description: "Max's website portfolio",
+	title: 'Maximillian Fong | Computer Science Student & AI/ML Engineer',
+	description:
+		'Final-year Honors Computer Science student at McGill University specializing in Artificial Intelligence, Deep Learning, and NLP. Experience building poker bots, CNNs, reinforcement learning agents, and enterprise AI tools.',
+	keywords: [
+		'Maximillian Fong',
+		'Computer Science',
+		'Artificial Intelligence',
+		'Machine Learning',
+		'Deep Learning',
+		'NLP',
+		'PyTorch',
+		'Reinforcement Learning',
+		'McGill University',
+		'Portfolio',
+		'Software Engineer',
+	],
+	authors: [{ name: 'Maximillian Fong' }],
+	openGraph: {
+		title: 'Maximillian Fong | Computer Science Student & AI/ML Engineer',
+		description:
+			'Final-year Honors Computer Science student at McGill University specializing in Artificial Intelligence, Deep Learning, and NLP.',
+		type: 'website',
+	},
+	twitter: {
+		card: 'summary_large_image',
+		title: 'Maximillian Fong | Computer Science Student & AI/ML Engineer',
+		description:
+			'Final-year Honors Computer Science student at McGill University specializing in AI, Deep Learning, and NLP.',
+	},
 };
 
 export default function RootLayout({
