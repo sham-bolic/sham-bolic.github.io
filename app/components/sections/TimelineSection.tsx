@@ -9,7 +9,7 @@ type TimelineItem = {
 	id: string | number;
 	type: 'work' | 'education';
 	date: string;
-	startDate: Date;
+	sortDate: Date;
 	title: string; // title or institution
 	subtitle: string; // company or degree
 	description?: string[]; // for work
@@ -25,13 +25,89 @@ export default function TimelineSection() {
 	const isVisible = useOnScreen(ref, 0.1);
 
 	const sortedItems = useMemo(() => {
+		// Sort the timeline based on the "most relevant" date the user sees:
+		// - Upcoming items float to the top
+		// - Date ranges sort by their end (or "Present")
+		// - Month/Year and Year-only strings are parsed deterministically
+		const monthIndex: Record<string, number> = {
+			jan: 0,
+			january: 0,
+			feb: 1,
+			february: 1,
+			mar: 2,
+			march: 2,
+			apr: 3,
+			april: 3,
+			may: 4,
+			jun: 5,
+			june: 5,
+			jul: 6,
+			july: 6,
+			aug: 7,
+			august: 7,
+			sep: 8,
+			september: 8,
+			oct: 9,
+			october: 9,
+			nov: 10,
+			november: 10,
+			dec: 11,
+			december: 11,
+		};
+
+		const parseMonthYear = (raw: string): Date | null => {
+			const s = raw.trim();
+			// Examples supported:
+			// - "September 2022"
+			// - "Sep 2022"
+			// - "2022"
+			const monthYear = s.match(/^([A-Za-z]+)\s+(\d{4})$/);
+			if (monthYear) {
+				const m = monthYear[1].toLowerCase();
+				const y = Number(monthYear[2]);
+				const month = monthIndex[m];
+				if (Number.isFinite(y) && month !== undefined) return new Date(y, month, 1);
+			}
+
+			const yearOnly = s.match(/^(\d{4})$/);
+			if (yearOnly) {
+				const y = Number(yearOnly[1]);
+				if (Number.isFinite(y)) return new Date(y, 0, 1);
+			}
+
+			return null;
+		};
+
+		const getSortDate = (displayDate: string): Date => {
+			const d = displayDate.trim();
+			if (d.toLowerCase().startsWith('upcoming')) return new Date(8640000000000000); // keep at top
+			if (d.toLowerCase() === 'present') return new Date();
+
+			// Ranges like "May 2023 - Aug 2023" or "May 2023 - Present"
+			if (d.includes(' - ')) {
+				const [, endRaw] = d.split(' - ');
+				const end = getSortDate(endRaw);
+				return end;
+			}
+
+			// "Upcoming: June 2026" etc (if we ever change casing/format)
+			const upcomingPayload = d.match(/^Upcoming:\s*(.*)$/i);
+			if (upcomingPayload) return getSortDate(upcomingPayload[1]);
+
+			// Month/Year or Year-only
+			const parsed = parseMonthYear(d);
+			if (parsed) return parsed;
+
+			// Last resort (keeps previous behavior for unexpected formats)
+			const fallback = new Date(d);
+			return Number.isNaN(fallback.getTime()) ? new Date(0) : fallback;
+		};
+
 		const workItems: TimelineItem[] = experience.map((job) => ({
 			id: `work-${job.id}`,
 			type: 'work',
 			date: job.date,
-			startDate: job.date.startsWith('Upcoming')
-				? new Date(8640000000000000) // Max valid date to ensure it stays at top
-				: new Date(job.date.split(' - ')[0]),
+			sortDate: getSortDate(job.date),
 			title: job.title,
 			subtitle: job.company,
 			description: job.description,
@@ -48,9 +124,7 @@ export default function TimelineSection() {
 					id: `edu-${edu.id}-end`,
 					type: 'education',
 					date: endYear === 'Present' ? 'Present' : `Upcoming: June ${endYear}`,
-					startDate: new Date(
-						endYear === 'Present' ? new Date() : `${endYear}-06-01`
-					),
+					sortDate: endYear === 'Present' ? new Date() : new Date(Number(endYear), 5, 1),
 					title: edu.degree,
 					subtitle: edu.institution,
 					minor: edu.minor, // Pass minor
@@ -62,7 +136,7 @@ export default function TimelineSection() {
 					id: `edu-${edu.id}-start`,
 					type: 'education',
 					date: `September ${startYear}`,
-					startDate: new Date(`${startYear}-09-01`),
+					sortDate: new Date(Number(startYear), 8, 1),
 					title: 'Started Degree',
 					subtitle: edu.institution,
 					logo: edu.logo, // Pass logo from data
@@ -72,7 +146,7 @@ export default function TimelineSection() {
 		});
 
 		return [...workItems, ...eduItems].sort(
-			(a, b) => b.startDate.getTime() - a.startDate.getTime()
+			(a, b) => b.sortDate.getTime() - a.sortDate.getTime()
 		);
 	}, []);
 

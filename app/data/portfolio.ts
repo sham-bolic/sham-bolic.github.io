@@ -135,21 +135,11 @@ export const skills = [
 
 export const experience = [
 	{
-		id: 3,
-		title: 'Growth Engineer Intern',
-		company: 'Botpress',
-		logo: '/images/icons/bp_icon.jpg',
-		date: 'Upcoming: Jun 2026 - Aug 2026',
-		description: [
-			'Upcoming internship focusing on growth engineering and user acquisition strategies.',
-		],
-	},
-	{
 		id: 1,
 		title: 'Growth Engineer Intern',
 		company: 'Botpress',
 		logo: '/images/icons/bp_icon.jpg',
-		date: 'Sep 2025 - Present',
+		date: 'Sep 2025 - Dec 2025',
 		description: [
 			'Enhance and expand our open-source integrations, including SharePoint, MailerLite, and Persat, with new features, improved stability, and broader capabilities.',
 			'Run a pilot program and provide exceptional, hands-on support to a Team Plan customer to ensure successful adoption and valuable feedback.',
