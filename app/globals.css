@@ -7,7 +7,7 @@
 		font-family: 'Georgia', serif;
 		background-color: #fafafa;
 		color: #44403c;
-		cursor: none;
+		cursor: url('/cursor-crosshair.svg') 16 16, auto;
 		background-image: radial-gradient(
 				circle at 15% 50%,
 				rgba(214, 158, 46, 0.08),
@@ -27,6 +27,7 @@
 	.dark body {
 		background-color: #0a0a0a;
 		color: #fafafa;
+		cursor: url('/cursor-crosshair.svg') 16 16, auto;
 		background-image: radial-gradient(
 				circle at 15% 50%,
 				rgba(214, 158, 46, 0.15),
@@ -41,10 +42,6 @@
 			linear-gradient(90deg, rgba(38, 38, 38, 0.5) 1px, transparent 1px);
 		background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
 		background-attachment: fixed;
-	}
-
-	* {
-		cursor: none !important;
 	}
 
 	.font-serif {
